@@ -1,3 +1,13 @@
 from django.db import models
+from django.utils import timezone
+from djmoney.models.fields import MoneyField
+from django.contrib.postgres.fields import ArrayField
+from sellers.models import Seller
 
-# Create your models here.
+
+class Product(models.Model):
+    name = models.CharField()
+    seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True)
+    current_price = MoneyField(max_digits=14, decimal_places=4, default_currency='EUR', blank=True)
+    price_history = ArrayField(MoneyField(max_digits=14, decimal_places=4, default_currency='EUR', blank=True), size=16)
+    added = models.DateTimeField(default=timezone.now)

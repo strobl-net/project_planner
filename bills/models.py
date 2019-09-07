@@ -8,7 +8,7 @@ from sellers.models import Seller
 
 class Bill(models.Model):
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
-    amount = MoneyField(max_digits=14, decimal_places=4, default_currency='EUR')
+    amount = MoneyField(max_digits=14, decimal_places=4, default_currency='EUR', blank=True)
     intake = models.BooleanField()
     digital = models.BooleanField()
     paid = models.BooleanField(blank=True)
