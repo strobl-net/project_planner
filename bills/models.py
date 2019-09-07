@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from djmoney.models.fields import MoneyField
 from projects.models import Project
 from sellers.models import Seller
+from products.models import Product
 
 
 class Bill(models.Model):
@@ -14,7 +15,8 @@ class Bill(models.Model):
     paid = models.BooleanField(blank=True)
     ordered_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True)
-    #products = models.ForeignKey()
+    products = models.ManyToManyField(Product, related_name="products+")
     date_order = models.DateField()
     date_paid = models.DateField(blank=True)
     created = models.DateTimeField(default=timezone.now)
+    description = models.TextField(blank=True)
