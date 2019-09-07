@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 
 
@@ -8,4 +9,7 @@ class Project(models.Model):
     description = models.TextField()
     created = models.DateTimeField(default=timezone.now)
     lead = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    members = models.ManyToManyField(User, related_name="project_members+")
+    member_ids = ArrayField(models.IntegerField(), null=True, blank=True)
+
+    def get_lead(self):
+        return self.lead_id

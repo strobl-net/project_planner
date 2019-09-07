@@ -5,6 +5,7 @@ from djmoney.models.fields import MoneyField
 from projects.models import Project
 from sellers.models import Seller
 from products.models import Product
+from django.contrib.postgres.fields import ArrayField
 
 
 class Bill(models.Model):
@@ -15,10 +16,9 @@ class Bill(models.Model):
     paid = models.BooleanField(blank=True)
     ordered_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True)
-    products = models.ManyToManyField(Product, related_name="products+")
+    products = ArrayField(models.IntegerField(), default=None, null=False, blank=True)
     date_order = models.DateField()
     date_paid = models.DateField(blank=True)
     created = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True)
-    bill_image = models.ImageField(blank=True)
     image = models.ImageField(upload_to='images/bills', null=True, blank=True)
