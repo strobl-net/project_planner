@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from djmoney.models.fields import MoneyField
 from projects.models import Project
+from sellers.models import Seller
 
 
 class Bill(models.Model):
@@ -12,7 +13,8 @@ class Bill(models.Model):
     digital = models.BooleanField()
     paid = models.BooleanField(blank=True)
     ordered_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    #seller = models.ForeignKey()
+    seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True)
+    #products = models.ForeignKey()
     date_order = models.DateField()
     date_paid = models.DateField(blank=True)
     created = models.DateTimeField(default=timezone.now)
