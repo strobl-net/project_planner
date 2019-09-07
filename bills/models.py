@@ -20,3 +20,5 @@ class Bill(models.Model):
     date_paid = models.DateField(blank=True)
     created = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True)
+    bill_image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to='images/bills', null=True, blank=True)
