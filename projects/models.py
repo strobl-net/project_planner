@@ -8,4 +8,4 @@ class Project(models.Model):
     description = models.TextField()
     created = models.DateTimeField(default=timezone.now)
     lead = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    members = models.ManyToManyField(User)
+    members = models.ManyToManyField(User, related_name="project_members+")
