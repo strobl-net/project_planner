@@ -7,6 +7,9 @@ import { NavComponent } from './components/skeletal/nav/nav.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { NotfoundComponent } from './components/pages/notfound/notfound.component';
+import { ProjectsComponent } from './components/pages/projects/projects.component';
+import { BillsComponent } from './components/pages/bills/bills.component';
+import { ProjectComponent } from './components/objects/project/project.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { NotfoundComponent } from './components/pages/notfound/notfound.componen
     NavComponent,
     HomeComponent,
     ProfileComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    ProjectsComponent,
+    BillsComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
