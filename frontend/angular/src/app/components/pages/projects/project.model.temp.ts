@@ -4,4 +4,5 @@ export class Project {
   description: string;
   lead: string;
   members_count: number;
+  image: string;
 }

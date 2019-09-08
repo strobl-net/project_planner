@@ -12,6 +12,8 @@ class Project(models.Model):
     lead = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     member_ids = ArrayField(models.IntegerField(), null=True, blank=True)
     members_count = models.PositiveIntegerField(blank=True, null=True)
+    image = models.ImageField(default="images/projects/NO_IMAGE.png", upload_to='images/projects',
+                              null=True, blank=True)
 
     def __str__(self):
         mem_or_mems = ""

@@ -221,3 +221,5 @@ dmypy.json
 .idea/project_planner.iml
 
 \.idea/
+
+media/
