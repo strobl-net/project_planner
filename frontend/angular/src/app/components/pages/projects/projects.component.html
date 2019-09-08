@@ -1,1 +1,5 @@
-<p>projects works!</p>
+<div *ngFor="let project of projects | async" class="container-fluid">
+  <h1>{{project.name}}</h1>
+  <p>{{project.description}}</p>
+  <p>{{project.lead}} | {{project.members_count}}</p>
+</div>

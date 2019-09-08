@@ -10,6 +10,9 @@ import { NotfoundComponent } from './components/pages/notfound/notfound.componen
 import { ProjectsComponent } from './components/pages/projects/projects.component';
 import { BillsComponent } from './components/pages/bills/bills.component';
 import { ProjectComponent } from './components/objects/project/project.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { RegisterComponent } from './components/pages/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import { ProjectComponent } from './components/objects/project/project.component
     NotfoundComponent,
     ProjectsComponent,
     BillsComponent,
-    ProjectComponent
+    ProjectComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
