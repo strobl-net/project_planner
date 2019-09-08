@@ -219,3 +219,5 @@ dmypy.json
 .idea/modules.xml
 .idea/vcs.xml
 .idea/project_planner.iml
+
+\.idea/
