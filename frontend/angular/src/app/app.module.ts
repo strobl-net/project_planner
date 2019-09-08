@@ -13,6 +13,7 @@ import { ProjectComponent } from './components/objects/project/project.component
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectDetailComponent } from './components/pages/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     BillsComponent,
     ProjectComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,

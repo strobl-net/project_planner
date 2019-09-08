@@ -2,7 +2,7 @@
   <div class="row">
     <!--Grid column-->
     <div *ngFor="let project of projects | async" class="col col-sm-4">
-      <img src="{{project.image}}" alt="" class="img-thumbnail img-fluid">
+      <a routerLink="/project/{{project.id}}"><img src="{{project.image}}" alt="" class="img-thumbnail img-fluid"></a>
       <h1>{{project.name}}</h1>
       <p>{{project.description | slice : 0: 50}} ... <b class="text-secondary">{{project.member_ids.length}} Members</b></p>
     </div>

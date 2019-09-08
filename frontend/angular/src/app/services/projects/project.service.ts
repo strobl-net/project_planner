@@ -16,4 +16,8 @@ export class ProjectService {
   getAll(): Observable<Project[]>{
     return this.http.get<Project[]>(this.url, {headers: this.http_headers});
   }
+
+  getByID(id: number): Observable<Project>{
+    return this.http.get<Project>(this.url + id, {headers: this.http_headers});
+  }
 }
