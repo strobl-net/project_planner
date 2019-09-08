@@ -1,4 +1,9 @@
 <div *ngIf="!project_loading">
-   <h1 class="thead-dark">{{project.name}}</h1>
+  <div class="container-fluid">
+    <h1 class="thead-dark">{{project.name}}</h1>
+    <p>{{project.description}}</p>
+    <p>contact Person: {{project.lead}}</p>
+    <p>current members ({{project.member_ids.length}}): {{project.member_ids}}</p>
+    </div>
 </div>
 
