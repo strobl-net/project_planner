@@ -1,6 +1,11 @@
-<div *ngFor="let project of projects | async" class="container-fluid">
-  <img src="{{project.image}}" class="img-thumbnail img-fluid">
-  <h1>{{project.name}}</h1>
-  <p>{{project.description}}</p>
-  <p>{{project.lead}} | {{project.members_count}}</p>
+<div class="container align-content-center my-md-4">
+  <div class="row">
+    <!--Grid column-->
+    <div *ngFor="let project of projects | async" class="col col-sm-4">
+      <img src="{{project.image}}" alt="" class="img-thumbnail img-fluid">
+      <h1>{{project.name}}</h1>
+      <p>{{project.description | slice : 0: 50}} ... <b class="text-secondary">{{project.member_ids.length}} Members</b></p>
+    </div>
+    <!--Grid column-->
+  </div>
 </div>

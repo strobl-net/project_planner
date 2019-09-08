@@ -3,6 +3,6 @@ export class Project {
   name: string;
   description: string;
   lead: string;
-  members_count: number;
+  member_ids: number[];
   image: string;
 }
