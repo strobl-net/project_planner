@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'sellers',
     'chats',
     'chat_messages',
+    'profiles',
 ]
 
 MIDDLEWARE = [
