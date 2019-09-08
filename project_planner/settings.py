@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'chats',
     'chat_messages',
     'profiles',
+    'frontend'
 ]
 
 MIDDLEWARE = [

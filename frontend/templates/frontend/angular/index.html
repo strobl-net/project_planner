@@ -1,0 +1,9 @@
+{% extends "frontend/angular/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <app-root></app-root>
+    <script type="text/javascript" src="{% static 'frontend/angular/runtime.js' %}"></script>
+    <script type="text/javascript" src="{% static 'frontend/angular/polyfills.js' %}"></script>
+    <script type="text/javascript" src="{% static 'frontend/angular/main.js' %}"></script>
+{% endblock %}
