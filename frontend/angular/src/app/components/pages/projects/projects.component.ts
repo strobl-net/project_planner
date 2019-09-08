@@ -10,8 +10,8 @@ import {ProjectService} from "../../../services/projects/project.service";
 })
 export class ProjectsComponent implements OnInit {
 
-  private projects: Observable<Project[]>;
-  private projects_loading: boolean = false;
+  public projects: Observable<Project[]>;
+  public projects_loading: boolean = false;
 
   constructor(private pro_service: ProjectService) {
     this.pro_service = pro_service;
