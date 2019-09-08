@@ -11,7 +11,7 @@ class Project(models.Model):
     created = models.DateTimeField(default=timezone.now)
     lead = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     member_ids = ArrayField(models.IntegerField(), null=True, blank=True)
-    image = models.ImageField(default="images/projects/NO_IMAGE.png", upload_to='images/projects',
+    image = models.ImageField(default="images/projects/no_img.webp", upload_to='images/projects',
                               null=True, blank=True)
 
     def __str__(self):

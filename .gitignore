@@ -222,4 +222,6 @@ dmypy.json
 
 \.idea/
 
-media/
+media/**/*.png
+media/**/*.jpeg
+media/**/*.jpg
