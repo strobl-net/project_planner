@@ -11,3 +11,6 @@ class Product(models.Model):
     current_price = MoneyField(max_digits=14, decimal_places=4, default_currency='EUR', blank=True)
     price_history = ArrayField(MoneyField(max_digits=14, decimal_places=4, default_currency='EUR', blank=True), blank=True)
     added = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.name, self.seller, self.current_price}'

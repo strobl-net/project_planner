@@ -22,3 +22,6 @@ class Bill(models.Model):
     created = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/bills', null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.project, self.amount, self.intake}'
