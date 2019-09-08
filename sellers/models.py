@@ -10,3 +10,6 @@ class Seller(models.Model):
     # geo_pos: 'g: longitude, latitude'
     area = models.TextField(blank=True)
     added = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.name + ": " + self.area}'

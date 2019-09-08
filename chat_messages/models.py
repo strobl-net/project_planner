@@ -11,3 +11,7 @@ class ChatMessage(models.Model):
     created = models.DateTimeField(default=timezone.now)
     last_edited = models.DateTimeField(null=True, blank=True)
     edited = models.BooleanField(null=True, blank=True)
+
+    def __str__(self):
+        st = f'{self.chat.project.name + ": " + self.text + " from " + self.author.username + ":" + str(self.created)}'
+        return st
