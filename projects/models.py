@@ -11,7 +11,6 @@ class Project(models.Model):
     created = models.DateTimeField(default=timezone.now)
     lead = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     member_ids = ArrayField(models.IntegerField(), null=True, blank=True)
-    members_count = models.PositiveIntegerField(blank=True, null=True)
     image = models.ImageField(default="images/projects/NO_IMAGE.png", upload_to='images/projects',
                               null=True, blank=True)
 
@@ -26,10 +25,3 @@ class Project(models.Model):
 
     def get_lead(self):
         return self.lead_id
-
-
-def set_member_count(sender, instance, **kwargs):
-    instance.members_count = instance.member_ids.__len__()
-
-
-post_save.connect(set_member_count, sender=Project)
