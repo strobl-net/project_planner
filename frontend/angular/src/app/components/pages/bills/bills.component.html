@@ -1,34 +1,33 @@
-<div *ngIf="!projects_loading && !bills_loading && names_set">
 <h1 class="h1">All Bills</h1>
 <div class="container-fluid">
   <table class="table table-bordered table-hover">
     <thead class="thead-dark">
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">amount</th>
-        <th scope="col">project</th>
-        <th scope="col">ordered by</th>
-        <th scope="col">seller</th>
-        <th scope="col">ordered on</th>
-        <th scope="col">paid on</th>
-        <th scope="col">description</th>
-        <th scope="col">paid</th>
-      </tr>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">amount</th>
+      <th scope="col">project</th>
+      <th scope="col">ordered by</th>
+      <th scope="col">seller</th>
+      <th scope="col">ordered on</th>
+      <th scope="col">paid on</th>
+      <th scope="col">description</th>
+      <th scope="col">paid</th>
+    </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let bill of bills">
-        <th>{{bill.id}}</th>
-        <th *ngIf="bill.intake" class="bg-success">+{{bill.amount}}</th>
-        <th *ngIf="!bill.intake" class="bg-danger">-{{bill.amount}}</th>
-        <th>{{bill.project_name | slice : 0: 15}}...</th>
-        <th>{{bill.ordered_by}}</th>
-        <th>{{bill.seller}}</th>
-        <th>{{bill.date_order}}</th>
-        <th>{{bill.date_paid}}</th>
-        <th>{{bill.description}}</th>
-        <th *ngIf="bill.paid"><img src="../../../../assets/check.webp"></th>
-        <th *ngIf="!bill.paid"><img src="../../../../assets/uncheck.webp"></th>
-      </tr>
+    <tbody *ngIf="!projects_loading && !bills_loading && names_set">
+    <tr *ngFor="let bill of bills">
+      <th>{{bill.id}}</th>
+      <th *ngIf="bill.intake" class="bg-success">+{{bill.amount}}</th>
+      <th *ngIf="!bill.intake" class="bg-danger">-{{bill.amount}}</th>
+      <th>{{bill.project_name | slice : 0: 15}}...</th>
+      <th>{{bill.ordered_by}}</th>
+      <th>{{bill.seller}}</th>
+      <th>{{bill.date_order}}</th>
+      <th>{{bill.date_paid}}</th>
+      <th>{{bill.description}}</th>
+      <th *ngIf="bill.paid"><img src="../../../../assets/check.webp"></th>
+      <th *ngIf="!bill.paid"><img src="../../../../assets/uncheck.webp"></th>
+    </tr>
     </tbody>
   </table>
 </div>
