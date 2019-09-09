@@ -9,3 +9,9 @@ class ProjectView(viewsets.ModelViewSet):
     ]
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+
+    def get_queryset(self):
+        return self.request.user.project.all()
+
+    def perform_create(self, serializer):
+        serializer.save(lead=self.request.user)
