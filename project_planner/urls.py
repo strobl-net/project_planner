@@ -11,6 +11,7 @@ from products import views as product_views
 from sellers import views as seller_views
 from accounts import views as account_views
 from knox import views as knox_views
+from django.urls import path
 
 router = routers.DefaultRouter()
 router.register('api/projects', project_views.ProjectView)
@@ -25,15 +26,11 @@ def index(request):
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
-    url('api/auth/', include('knox.urls')),
-    url('api/auth/register/', account_views.RegisterAPI.as_view()),
-    url('api/auth/login/', account_views.LoginAPI.as_view()),
-    url('api/auth/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
-    url('api/auth/user/', account_views.UserAPI.as_view())
+  path('admin/', admin.site.urls),
+  path('', include(router.urls)),
+  path('api/auth/register/', account_views.RegisterAPI.as_view()),
+  path('api/auth/login/', account_views.LoginAPI.as_view()),
+  path('api/auth/user/', account_views.UserAPI.as_view()),
+  path('api/auth/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
+  path('api/auth/', include('knox.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-

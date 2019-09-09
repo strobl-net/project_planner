@@ -14,10 +14,10 @@ export class ProjectService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Project[]>{
-    return this.http.get<Project[]>(this.url, {headers: this.http_headers});
+    return this.http.get<Project[]>(this.url);
   }
 
   getByID(id: number): Observable<Project>{
-    return this.http.get<Project>(this.url + id, {headers: this.http_headers});
+    return this.http.get<Project>(this.url + id);
   }
 }
