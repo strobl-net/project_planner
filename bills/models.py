@@ -13,7 +13,7 @@ class Bill(models.Model):
     amount = MoneyField(max_digits=14, decimal_places=4, default_currency='EUR', blank=True)
     intake = models.BooleanField()
     digital = models.BooleanField()
-    paid = models.BooleanField(blank=True)
+    paid = models.BooleanField(default=False, blank=True)
     ordered_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True)
     products = ArrayField(models.IntegerField(), default=None, null=False, blank=True)

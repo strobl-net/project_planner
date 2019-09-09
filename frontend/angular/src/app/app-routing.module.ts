@@ -7,6 +7,7 @@ import {ProjectsComponent} from "./components/pages/projects/projects.component"
 import {LoginComponent} from "./components/pages/login/login.component";
 import {RegisterComponent} from "./components/pages/register/register.component";
 import {ProjectDetailComponent} from "./components/pages/project-detail/project-detail.component";
+import {BillsComponent} from "./components/pages/bills/bills.component";
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'projects', component: ProjectsComponent},
-  {path: 'project/:id', component:ProjectDetailComponent},
+  {path: 'project/:id', component: ProjectDetailComponent},
+  {path: 'bills', component: BillsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: '**', component: NotfoundComponent},
