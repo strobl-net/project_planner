@@ -1,8 +1,9 @@
-no_img -> https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png
-no_profile_img -> https://icon-library.net/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg
-smv -> https://www.gymnasiumdorfen.de/fileadmin/Inhalte/Bilder/UnsereSchule/Schulfamilie/SMV_AKs.svg
-get-a-life -> https://qph.fs.quoracdn.net/main-qimg-a3f6a7e877eda4ce5ccc3e1bde15659a
-check -> http://www.myiconfinder.com/icon/download/32-32-fb707410a020d77346fcd2dc2f6cc93e-cross.png~8648
-uncheck -> http://www.myiconfinder.com/icon/cross-close-delete-exit-logout-remove-uncheck-wrong-no-unselect/8648
+no_img (09.09.2019) -> https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png
+no_profile_img (09.09.2019) -> https://icon-library.net/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg
+smv (09.09.2019) -> https://www.gymnasiumdorfen.de/fileadmin/Inhalte/Bilder/UnsereSchule/Schulfamilie/SMV_AKs.svg
+get-a-life (09.09.2019) -> https://qph.fs.quoracdn.net/main-qimg-a3f6a7e877eda4ce5ccc3e1bde15659a
+check (09.09.2019) -> http://www.myiconfinder.com/icon/download/32-32-fb707410a020d77346fcd2dc2f6cc93e-cross.png~8648
+uncheck (09.09.2019) -> http://www.myiconfinder.com/icon/cross-close-delete-exit-logout-remove-uncheck-wrong-no-unselect/8648
 
 I changed all their formats to .webp regardless of their original format
+DateFormat: MM.dd.YYYY
