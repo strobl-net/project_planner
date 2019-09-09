@@ -9,7 +9,7 @@ class Project(models.Model):
     name = models.CharField(max_length=32)
     description = models.TextField()
     created = models.DateTimeField(default=timezone.now)
-    lead = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    lead = models.ForeignKey(User, related_name='project', on_delete=models.SET_NULL, null=True)
     member_ids = ArrayField(models.IntegerField(), null=True, blank=True)
     image = models.ImageField(default="images/projects/no_img.webp", upload_to='images/projects',
                               null=True, blank=True)
