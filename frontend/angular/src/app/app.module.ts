@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProjectDetailComponent} from './components/pages/project-detail/project-detail.component';
 import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./services/auth/auth.interceptor";
+import { LogoutComponent } from './components/pages/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {AuthInterceptor} from "./services/auth/auth.interceptor";
     ProjectComponent,
     LoginComponent,
     RegisterComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

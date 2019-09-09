@@ -18,6 +18,6 @@ export class ProjectService {
   }
 
   getByID(id: number): Observable<Project>{
-    return this.http.get<Project>(this.url + id);
+    return this.http.get<Project>(this.url + id, {headers: this.http_headers});
   }
 }

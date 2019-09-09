@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary container-fluid">
+<nav *ngIf="!current_user_loading" class="navbar navbar-expand-lg navbar-dark bg-primary container-fluid">
   <a class="navbar-brand" routerLink="/">{{appTitle}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="/bills">Bills</a>
       </li>
-      <li [hidden]="!loggedIn" class="nav-item dropdown active">
+      <li *ngIf="loggedIn" class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
           {{current_user.username}}
@@ -28,7 +28,7 @@
           <a class="dropdown-item" routerLink="/logout">Logout</a>
         </div>
       </li>
-      <li [hidden]="loggedIn" class="nav-item active">
+      <li *ngIf="!loggedIn" class="nav-item active">
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
     </ul>

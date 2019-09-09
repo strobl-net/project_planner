@@ -28,11 +28,12 @@ export class NavComponent implements OnInit {
     this.user_service.getUser().subscribe(
       data => {
         this.current_user = data;
-        this.current_user_loading = false;
         this.loggedIn = true;
+        this.current_user_loading = false;
       },
       error => {
-        console.log('could not get user data')
+        this.loggedIn = false;
+        this.current_user_loading = false
       }
     );
   }

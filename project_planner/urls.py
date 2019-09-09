@@ -26,11 +26,12 @@ def index(request):
 
 
 urlpatterns = [
-  path('admin/', admin.site.urls),
-  path('', include(router.urls)),
-  path('api/auth/register/', account_views.RegisterAPI.as_view()),
-  path('api/auth/login/', account_views.LoginAPI.as_view()),
-  path('api/auth/user/', account_views.UserAPI.as_view()),
-  path('api/auth/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
-  path('api/auth/', include('knox.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('admin/', admin.site.urls),
+                  path('', include(router.urls)),
+                  path('api/auth/register/', account_views.RegisterAPI.as_view()),
+                  path('api/auth/login/', account_views.LoginAPI.as_view()),
+                  path('api/auth/user/', account_views.UserAPI.as_view()),
+                  path('api/auth/', include('knox.urls')),
+                  path('api/auth/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
+
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
