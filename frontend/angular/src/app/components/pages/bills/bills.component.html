@@ -18,9 +18,9 @@
     <tbody>
       <tr *ngFor="let bill of bills">
         <th>{{bill.id}}</th>
-        <ng-template *ngIf="bill.intake; else elseBlock"><th class="bg-success">{{bill.amount}}</th></ng-template>
-        <ng-template #elseBlock><th class="bg-danger">{{bill.amount}}</th></ng-template>
-        <th>{{bill.project_name}}</th>
+        <th *ngIf="bill.intake" class="bg-success">{{bill.amount}}</th>
+        <th *ngIf="!bill.intake" class="bg-danger">{{bill.amount}}</th>
+        <th>{{bill.project_name | slice : 0: 15}}...</th>
         <th>{{bill.ordered_by}}</th>
         <th>{{bill.seller}}</th>
         <th>{{bill.date_order}}</th>
