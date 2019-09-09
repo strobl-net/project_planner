@@ -18,15 +18,16 @@
     <tbody>
       <tr *ngFor="let bill of bills">
         <th>{{bill.id}}</th>
-        <th *ngIf="bill.intake" class="bg-success">{{bill.amount}}</th>
-        <th *ngIf="!bill.intake" class="bg-danger">{{bill.amount}}</th>
+        <th *ngIf="bill.intake" class="bg-success">+{{bill.amount}}</th>
+        <th *ngIf="!bill.intake" class="bg-danger">-{{bill.amount}}</th>
         <th>{{bill.project_name | slice : 0: 15}}...</th>
         <th>{{bill.ordered_by}}</th>
         <th>{{bill.seller}}</th>
         <th>{{bill.date_order}}</th>
         <th>{{bill.date_paid}}</th>
         <th>{{bill.description}}</th>
-        <th>{{bill.paid}}</th>
+        <th *ngIf="bill.paid"><img src="../../../../assets/check.webp"></th>
+        <th *ngIf="!bill.paid"><img src="../../../../assets/uncheck.webp"></th>
       </tr>
     </tbody>
   </table>
