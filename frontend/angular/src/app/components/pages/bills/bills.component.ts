@@ -32,7 +32,7 @@ export class BillsComponent implements OnInit {
       data => {
         this.bills = data;
         this.bills_loading = false;
-        this.set_project_names();
+        this.setProjectNames();
       },
       error => {
         console.log(error);
@@ -44,15 +44,14 @@ export class BillsComponent implements OnInit {
       data => {
         this.projects = data;
         this.projects_loading = false;
-        this.set_project_names();
+        this.setProjectNames();
       },
       error => {
         console.log(error);
       })
   };
 
-  set_project_names(): void {
-    console.log(this.bills_loading, this.projects_loading)
+  setProjectNames(): void {
     if(!this.projects_loading && !this.bills_loading){
       for(let i in this.projects){
         for(let j in this.bills){
@@ -63,6 +62,10 @@ export class BillsComponent implements OnInit {
       }
       this.names_set = true
     }
+  }
+
+  createNewProject(): void {
+
   }
 
 }

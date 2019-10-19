@@ -17,6 +17,7 @@ import {ProjectDetailComponent} from './components/pages/project-detail/project-
 import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./services/auth/auth.interceptor";
 import { LogoutComponent } from './components/pages/logout/logout.component';
+import { BillDetailComponent } from './components/pages/bill-detail/bill-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LogoutComponent } from './components/pages/logout/logout.component';
     LoginComponent,
     RegisterComponent,
     ProjectDetailComponent,
-    LogoutComponent
+    LogoutComponent,
+    BillDetailComponent
   ],
   imports: [
     BrowserModule,

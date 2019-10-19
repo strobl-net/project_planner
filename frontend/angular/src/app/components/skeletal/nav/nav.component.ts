@@ -6,7 +6,7 @@ import set = Reflect.set;
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.styl']
+  styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
 

@@ -1,0 +1,19 @@
+.new-project {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  height: 300px;
+  width: 250px;
+  background-color: #007bff;
+
+  flex-direction: column;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: stretch;
+}
