@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
 import {BillService} from "../../../services/bills/bill.service";
 import {Bill} from "../../../services/bills/bill.model.temp";
-import {Project} from "../projects/project.model.temp";
-import {ProjectService} from "../../../services/projects/project.service";
 
 
 @Component({
@@ -14,6 +11,7 @@ import {ProjectService} from "../../../services/projects/project.service";
 export class BillsComponent implements OnInit {
 
   public bills: Bill[];
+  public new_bill: Bill;
 
   bills_loading: boolean = true;
 
@@ -24,6 +22,7 @@ export class BillsComponent implements OnInit {
 
   ngOnInit() {
     this.getBills();
+    this.new_bill = new Bill()
   }
 
 
@@ -38,4 +37,7 @@ export class BillsComponent implements OnInit {
       })
   };
 
+  createNewBill() {
+
+  }
 }

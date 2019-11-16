@@ -48,7 +48,18 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        Modal body..
+        Amount: <input type="number" step="0.01" [(ngModel)]="new_bill.amount"><br>
+        Intake: <input type="checkbox" [(ngModel)]="new_bill.intake"><br>
+        Digital: <input type="checkbox" [(ngModel)]="new_bill.digital"><br>
+        Paid: <input type="checkbox" [(ngModel)]="new_bill.paid"><br>
+        Date Ordered: <input type="date" [(ngModel)]="new_bill.date_order"><br>
+        Date Paid: <input type="date" [(ngModel)]="new_bill.date_paid"><br>
+        Description: <input type="text" [(ngModel)]="new_bill.description"><br>
+        Ordered_By: <input type="number" step="1" [(ngModel)]="new_bill.ordered_by"><br>
+        Seller: <input type="number" step="1" [(ngModel)]="new_bill.seller"><br>
+        Project: <input type="number" step="1" [(ngModel)]="new_bill.project"><br>
+        Project: <input type="string" [(ngModel)]="new_bill.products"><br>
+        <button (click)="createNewBill()">new Bill</button>
       </div>
 
       <!-- Modal footer -->

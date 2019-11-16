@@ -9,7 +9,6 @@ import {ProfileComponent} from './components/pages/profile/profile.component';
 import {NotfoundComponent} from './components/pages/notfound/notfound.component';
 import {ProjectsComponent} from './components/pages/projects/projects.component';
 import {BillsComponent} from './components/pages/bills/bills.component';
-import {ProjectComponent} from './components/objects/project/project.component';
 import {LoginComponent} from './components/pages/login/login.component';
 import {RegisterComponent} from './components/pages/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -28,12 +27,11 @@ import { BillDetailComponent } from './components/pages/bill-detail/bill-detail.
     NotfoundComponent,
     ProjectsComponent,
     BillsComponent,
-    ProjectComponent,
     LoginComponent,
     RegisterComponent,
     ProjectDetailComponent,
     LogoutComponent,
-    BillDetailComponent
+    BillDetailComponent,
   ],
   imports: [
     BrowserModule,
