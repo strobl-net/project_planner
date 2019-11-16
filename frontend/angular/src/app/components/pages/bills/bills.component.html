@@ -1,5 +1,8 @@
-<h1 class="h1">All Bills</h1>
 <div class="container-fluid">
+  <h1 class="h1">Bills</h1>
+  <a href="" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addBillModal">
+    <span class="glyphicon glyphicon-plus"></span> Add
+  </a>
   <table class="table table-bordered table-hover">
     <thead class="thead-dark">
     <tr>
@@ -14,14 +17,14 @@
       <th scope="col">paid</th>
     </tr>
     </thead>
-    <tbody *ngIf="!projects_loading && !bills_loading && names_set">
+    <tbody *ngIf="!bills_loading">
     <tr *ngFor="let bill of bills">
       <th>{{bill.id}}</th>
       <th *ngIf="bill.intake" class="bg-success">+{{bill.amount}}</th>
       <th *ngIf="!bill.intake" class="bg-danger">-{{bill.amount}}</th>
-      <th>{{bill.project_name | slice : 0: 15}}...</th>
-      <th>{{bill.ordered_by}}</th>
-      <th>{{bill.seller}}</th>
+      <th>{{bill.project_name | slice : 0: 20}}...</th>
+      <th>{{bill.ordered_by_name}}</th>
+      <th>{{bill.seller_name}}</th>
       <th>{{bill.date_order}}</th>
       <th>{{bill.date_paid}}</th>
       <th>{{bill.description}}</th>
@@ -30,4 +33,29 @@
     </tr>
     </tbody>
   </table>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="addBillModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>

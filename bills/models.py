@@ -25,3 +25,15 @@ class Bill(models.Model):
 
     def __str__(self):
         return f'{self.project, self.amount, self.intake}'
+
+    @property
+    def seller_name(self):
+        return self.seller.name
+
+    @property
+    def ordered_by_name(self):
+        return self.ordered_by.username
+
+    @property
+    def project_name(self):
+        return self.project.name

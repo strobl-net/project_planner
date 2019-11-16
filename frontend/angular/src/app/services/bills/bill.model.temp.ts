@@ -1,5 +1,3 @@
-import {Project} from "../projects/project.model.temp";
-
 export class Bill {
   id: number;
   amount_currency: string;
@@ -8,10 +6,12 @@ export class Bill {
   digital: boolean;
   paid: boolean;
   products: number[];
-  ordered_by: number;
+  ordered_by: any;
+  ordered_by_name: string;
   project: number;
   project_name: string;
   seller: number;
+  seller_name: string;
   date_order: any;
   date_paid: any;
   created: any;

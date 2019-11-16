@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../services/auth/user.model";
+import {UserAuth} from "../../../services/auth/user.auth.model";
 import {UserService} from "../../../services/auth/user.service";
 import set = Reflect.set;
 
@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
 
   appTitle: string = 'ProjectPlanner';
   loggedIn: boolean = false;
-  current_user: User;
+  current_user: UserAuth;
   current_user_loading: boolean = false;
 
   constructor(private user_service: UserService) {
@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
 
   setCurrentUser = () => {
     this.current_user_loading = true;
-    this.user_service.getUser().subscribe(
+    this.user_service.getAll().subscribe(
       data => {
         this.current_user = data;
         this.loggedIn = true;
