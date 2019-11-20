@@ -58,7 +58,10 @@
         Ordered_By: <input type="number" step="1" [(ngModel)]="new_bill.ordered_by"><br>
         Seller: <input type="number" step="1" [(ngModel)]="new_bill.seller"><br>
         Project: <input type="number" step="1" [(ngModel)]="new_bill.project"><br>
-        Project: <input type="string" [(ngModel)]="new_bill.products"><br>
+        Add Product: <input list="addNewProduct" type="string" (input)="updateSearchProduct()" [(ngModel)]="current_search">
+        <datalist id="addNewProduct" *ngFor="let item of items">
+          <option value="{{item.name}}">
+        </datalist>
         <button (click)="createNewBill()">new Bill</button>
       </div>
 
