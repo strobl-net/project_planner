@@ -22,11 +22,6 @@ router.register('api/products', product_views.ProductView)
 router.register('api/sellers', seller_views.SellerView)
 router.register('api/users', user_views.UserView)
 
-
-def index(request):
-    return render(request, 'frontend/index.html')
-
-
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include(router.urls)),
