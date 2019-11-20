@@ -18,7 +18,7 @@ router = routers.DefaultRouter()
 router.register('api/projects', project_views.ProjectView)
 router.register('api/bills', bill_views.BillView)
 router.register('api/profiles', profile_views.ProfileView)
-router.register('api/products', product_views.BillView)
+router.register('api/products', product_views.ProductView)
 router.register('api/sellers', seller_views.SellerView)
 router.register('api/users', user_views.UserView)
 
