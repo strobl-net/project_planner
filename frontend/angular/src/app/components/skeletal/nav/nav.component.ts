@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserAuth} from "../../../services/auth/user.auth.model";
 import {UserService} from "../../../services/auth/user.service";
-import set = Reflect.set;
 
 @Component({
   selector: 'app-nav',

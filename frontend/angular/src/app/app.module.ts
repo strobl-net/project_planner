@@ -17,6 +17,8 @@ import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./services/auth/auth.interceptor";
 import { LogoutComponent } from './components/pages/logout/logout.component';
 import { BillDetailComponent } from './components/pages/bill-detail/bill-detail.component';
+import {MatSliderModule} from "@angular/material/slider";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { BillDetailComponent } from './components/pages/bill-detail/bill-detail.
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatSliderModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
