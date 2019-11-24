@@ -14,17 +14,20 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProjectDetailComponent} from './components/pages/project-detail/project-detail.component';
 import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./services/auth/auth.interceptor";
-import { LogoutComponent } from './components/pages/logout/logout.component';
-import { BillDetailComponent } from './components/pages/bill-detail/bill-detail.component';
+import {LogoutComponent} from './components/pages/logout/logout.component';
+import {BillDetailComponent} from './components/pages/bill-detail/bill-detail.component';
 import {MatSliderModule} from "@angular/material/slider";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { NavbarComponent } from './components/skeletal/navbar/navbar.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+import {NavbarComponent} from './components/skeletal/navbar/navbar.component';
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatRippleModule,
   ],
   providers: [
     {
