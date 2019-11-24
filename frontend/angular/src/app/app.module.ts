@@ -19,11 +19,17 @@ import { LogoutComponent } from './components/pages/logout/logout.component';
 import { BillDetailComponent } from './components/pages/bill-detail/bill-detail.component';
 import {MatSliderModule} from "@angular/material/slider";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { NavbarComponent } from './components/skeletal/navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     HomeComponent,
     ProfileComponent,
     NotfoundComponent,
@@ -34,6 +40,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ProjectDetailComponent,
     LogoutComponent,
     BillDetailComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +49,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     FormsModule,
     MatSliderModule,
     BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [
     {
