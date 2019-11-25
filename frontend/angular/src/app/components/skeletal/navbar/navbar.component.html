@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button routerLink="/">{{app_title}}</button>
+    <button mat-button routerLink="#">Surveys</button>
+    <button mat-button routerLink="/projects">Projects</button>
+    <button mat-button routerLink="/bills">Bills</button>
+    <span class="spacer"></span>
+
+    <button mat-flat-button routerLink="/login" *ngIf="!loggedIn">Login</button>
+
+    <div *ngIf="loggedIn">
+      <button mat-flat-button [mat-menu-trigger-for]="options">{{current_user.username}}</button>
+      <mat-menu #options="matMenu">
+        <button mat-menu-item routerLink="/profile/{{current_user.id}}">Profile</button>
+        <button mat-menu-item routerLink="/options/">Options</button>
+        <button mat-menu-item routerLink="/logout/">Logout</button>
+      </mat-menu>
+    </div>
+
+
+  </mat-toolbar-row>
+</mat-toolbar>

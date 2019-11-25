@@ -1,24 +1,24 @@
-<div class="container align-content-center" *ngIf="!projects_loading">
-  <div class="row">
-    <!--Grid column-->
-    <div class="row">
-      <div *ngFor="let project of projects | async">
-        <div class="col">
-          <a routerLink="/project/{{project.id}}"><img src="{{project.image}}" alt=""
-                                                       class="img-thumbnail img-fluid"></a>
-          <p><b>{{project.name}}</b></p>
-          <p>{{project.description | slice : 0: 30}} ... <b class="text-secondary">{{project.member_ids.length}}
-            Members</b></p>
-        </div>
-      </div>
-    </div>
-    <div class="new-project">
-      <input [(ngModel)]="new_project.name" placeholder="name"><br>
-      <input [(ngModel)]="new_project.description" placeholder="description"><br>
-      <input [(ngModel)]="new_project.lead" placeholder="lead"><br>
-      <input [(ngModel)]="member_ids" placeholder="member_ids"><br>
-      <input [(ngModel)]="new_project.image" placeholder="image link"><br>
-      <button (click)="createNewProject()">add Project</button>
-    </div>
+<mat-grid-list cols="3" rowHeight="2:1">
+  <div *ngFor="let project of projects | async">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{project.name}}</mat-card-title>
+        </mat-card-header>
+        <a routerLink="/project/{{project.id}}"><img src="{{project.image}}" alt="" width="40%" height="40%"></a>
+        <div style="float: right; width: 50%"> {{project.description | slice : 0: 300}}...</div>
+        <mat-card-content>
+          <p> <b class="text-secondary">{{project.member_ids.length}} Members</b></p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
   </div>
-</div>
+</mat-grid-list>
+<!--<input [(ngModel)]="new_project.name" placeholder="name"><br>-->
+<!--<input [(ngModel)]="new_project.description" placeholder="description"><br>-->
+<!--<input [(ngModel)]="new_project.lead" placeholder="lead"><br>-->
+<!--<input [(ngModel)]="member_ids" placeholder="member_ids"><br>-->
+<!--<input [(ngModel)]="new_project.image" placeholder="image link"><br>-->
+<!--<button (click)="createNewProject()">add Project</button>-->
+
+
