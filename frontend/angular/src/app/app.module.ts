@@ -28,6 +28,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatRippleModule} from "@angular/material/core";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -60,6 +63,9 @@ import {MatRippleModule} from "@angular/material/core";
     MatTableModule,
     MatPaginatorModule,
     MatRippleModule,
+    MatGridListModule,
+    MatCardModule,
+    MatFormFieldModule,
   ],
   providers: [
     {
