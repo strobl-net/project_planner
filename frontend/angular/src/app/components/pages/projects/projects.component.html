@@ -6,9 +6,9 @@
           <mat-card-title>{{project.name}}</mat-card-title>
         </mat-card-header>
         <a routerLink="/project/{{project.id}}"><img src="{{project.image}}" alt="" width="40%" height="40%"></a>
+        <div style="float: right; width: 50%"> {{project.description | slice : 0: 300}}...</div>
         <mat-card-content>
-          <p>{{project.description | slice : 0: 30}} ... <b class="text-secondary">{{project.member_ids.length}}
-            Members</b></p>
+          <p> <b class="text-secondary">{{project.member_ids.length}} Members</b></p>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
