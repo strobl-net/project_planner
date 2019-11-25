@@ -31,6 +31,7 @@ import {MatRippleModule} from "@angular/material/core";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatGridListModule,
     MatCardModule,
     MatFormFieldModule,
+    MatMenuModule,
   ],
   providers: [
     {
