@@ -1,72 +1,61 @@
-<div class="container-fluid">
-  <h1 class="h1">Bills</h1>
-  <a href="" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addBillModal">
-    <span class="glyphicon glyphicon-plus"></span> Add
-  </a>
-  <table class="table table-bordered table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">amount</th>
-      <th scope="col">project</th>
-      <th scope="col">ordered by</th>
-      <th scope="col">seller</th>
-      <th scope="col">ordered on</th>
-      <th scope="col">paid on</th>
-      <th scope="col">description</th>
-      <th scope="col">paid</th>
-    </tr>
-    </thead>
-    <tbody *ngIf="!bills_loading">
-    <tr *ngFor="let bill of bills">
-      <th>{{bill.id}}</th>
-      <th *ngIf="bill.intake" class="bg-success">+{{bill.amount}}</th>
-      <th *ngIf="!bill.intake" class="bg-danger">-{{bill.amount}}</th>
-      <th>{{bill.project_name | slice : 0: 20}}...</th>
-      <th>{{bill.ordered_by_name}}</th>
-      <th>{{bill.seller_name}}</th>
-      <th>{{bill.date_order}}</th>
-      <th>{{bill.date_paid}}</th>
-      <th>{{bill.description}}</th>
-      <th *ngIf="bill.paid"><img src="../../../../assets/check.webp"></th>
-      <th *ngIf="!bill.paid"><img src="../../../../assets/uncheck.webp"></th>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<!--Bill Data Table-->
+<table mat-table [dataSource]="bills">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No.</th>
+    <td mat-cell *matCellDef="let e">{{e.id}}</td>
+  </ng-container>
 
-<!-- The Modal -->
-<div class="modal" id="addBillModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <!-- Amount Column -->
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef> Amount</th>
+    <td mat-cell *matCellDef="let e">
+      {{e.amount}}
+      <img *ngIf="e.intake" src="../../../../assets/trending_up-24px.svg">
+      <img *ngIf="!e.intake" src="../../../../assets/trending_down-24px.svg">
+    </td>
+  </ng-container>
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+  <!-- Project Column -->
+  <ng-container matColumnDef="project">
+    <th mat-header-cell *matHeaderCellDef> Project</th>
+    <td mat-cell *matCellDef="let e"> {{e.project_name}} </td>
+  </ng-container>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        Amount: <input type="number" step="0.01" [(ngModel)]="new_bill.amount"><br>
-        Intake: <input type="checkbox" [(ngModel)]="new_bill.intake"><br>
-        Digital: <input type="checkbox" [(ngModel)]="new_bill.digital"><br>
-        Paid: <input type="checkbox" [(ngModel)]="new_bill.paid"><br>
-        Date Ordered: <input type="date" [(ngModel)]="new_bill.date_order"><br>
-        Date Paid: <input type="date" [(ngModel)]="new_bill.date_paid"><br>
-        Description: <input type="text" [(ngModel)]="new_bill.description"><br>
-        Ordered_By: <input type="number" step="1" [(ngModel)]="new_bill.ordered_by"><br>
-        Seller: <input type="number" step="1" [(ngModel)]="new_bill.seller"><br>
-        Project: <input type="number" step="1" [(ngModel)]="new_bill.project"><br>
-        Project: <input type="string" [(ngModel)]="new_bill.products"><br>
-        <button (click)="createNewBill()">new Bill</button>
-      </div>
+  <!-- Seller Column -->
+  <ng-container matColumnDef="seller">
+    <th mat-header-cell *matHeaderCellDef> Seller</th>
+    <td mat-cell *matCellDef="let e"> {{e.seller_name}} </td>
+  </ng-container>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
+  <!-- Ordered-By Column -->
+  <ng-container matColumnDef="ordered_by">
+    <th mat-header-cell *matHeaderCellDef> Ordered By</th>
+    <td mat-cell *matCellDef="let e"> {{e.ordered_by_name}} </td>
+  </ng-container>
 
-    </div>
-  </div>
-</div>
+  <!-- Date of Order Column -->
+  <ng-container matColumnDef="date_order">
+    <th mat-header-cell *matHeaderCellDef> Ordered On</th>
+    <td mat-cell *matCellDef="let e"> {{e.date_order}} </td>
+  </ng-container>
+
+  <!-- Is-Paid Column -->
+  <ng-container matColumnDef="paid">
+    <th mat-header-cell *matHeaderCellDef> Paid</th>
+    <td mat-cell *matCellDef="let e">
+      <img *ngIf="e.paid" src="../../../../assets/done-24px.svg">
+      <img *ngIf="!e.paid" src="../../../../assets/error-24px.svg">
+    </td>
+  </ng-container>
+  <!-- Date of Payment Column -->
+  <ng-container matColumnDef="date_paid">
+    <th mat-header-cell *matHeaderCellDef> Paid On</th>
+    <td mat-cell *matCellDef="let e"> {{e.date_paid}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
