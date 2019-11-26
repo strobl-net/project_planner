@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.styl']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
     this.auth_service.login(this.login_credentials).subscribe(
       response => {
         localStorage.setItem('token', response.token);
-        window.location.reload();
-        this.router.navigateByUrl('');
       },
       error => {
         console.log('error' + error)

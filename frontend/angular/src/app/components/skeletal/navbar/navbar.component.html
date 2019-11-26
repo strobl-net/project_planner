@@ -6,7 +6,7 @@
     <button mat-button routerLink="/bills">Bills</button>
     <span class="spacer"></span>
 
-    <button mat-flat-button routerLink="/login" *ngIf="!loggedIn">Login</button>
+    <button mat-flat-button *ngIf="!loggedIn" routerLink="/login">Login</button>
 
     <div *ngIf="loggedIn">
       <button mat-flat-button [mat-menu-trigger-for]="options">{{current_user.username}}</button>

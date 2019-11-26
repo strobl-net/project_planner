@@ -12,7 +12,7 @@ import {LoginComponent} from './components/pages/login/login.component';
 import {RegisterComponent} from './components/pages/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProjectDetailComponent} from './components/pages/project-detail/project-detail.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./services/auth/auth.interceptor";
 import {LogoutComponent} from './components/pages/logout/logout.component';
 import {BillDetailComponent} from './components/pages/bill-detail/bill-detail.component';
@@ -32,6 +32,10 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -48,6 +52,7 @@ import {MatMenuModule} from "@angular/material/menu";
     BillDetailComponent,
     NavbarComponent,
   ],
+  entryComponents: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -68,6 +73,11 @@ import {MatMenuModule} from "@angular/material/menu";
     MatCardModule,
     MatFormFieldModule,
     MatMenuModule,
+    MatDialogModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
