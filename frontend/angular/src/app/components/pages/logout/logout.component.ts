@@ -20,8 +20,10 @@ export class LogoutComponent implements OnInit {
   logout = () => {
     this.auth_service.logout().subscribe(
       data => {
-        window.location.reload();
-        this.router.navigateByUrl('/');
+        this.router.navigate(['/'])
+          .then(() => {
+            window.location.reload();
+          });
       },
       error => {
       }
