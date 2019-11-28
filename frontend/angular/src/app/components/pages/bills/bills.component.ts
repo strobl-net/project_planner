@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BillService} from "../../../services/bills/bill.service";
 import {Bill} from "../../../services/bills/bill.model.temp";
 import {ItemService} from "../../../services/items/item.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AddBillComponent} from "../../modals/add-bill/add-bill.component";
 
 
 @Component({
@@ -23,23 +25,24 @@ export class BillsComponent implements OnInit {
 
 
 
-  constructor(private bill_service: BillService, private itemService: ItemService) {
-    this.bill_service = bill_service;
-
-  }
+  constructor(private bill_service: BillService,
+              private itemService: ItemService,
+              public dialog: MatDialog,
+              private changeDetectorRef: ChangeDetectorRef,
+  ) { }
 
   ngOnInit() {
-    this.getBills();
+    this.refresh();
     this.new_bill = new Bill()
   }
 
 
-  getBills = () => {
+  public refresh = () => {
     this.bill_service.getAll().subscribe(
       data => {
         this.bills = data;
-        this.isLoading = false;
-        this.resultsLength = data.length
+        this.resultsLength = data.length;
+        this.changeDetectorRef.detectChanges();
       },
       error => {
         console.log(error);
@@ -58,6 +61,14 @@ export class BillsComponent implements OnInit {
         console.log(error);
       })
   };
+
+  public openAddBill(): void {
+    this.dialog.open(AddBillComponent, {data: {}}).afterClosed().subscribe(
+      result => {
+        this.refresh()
+      }
+    );
+  }
 
 
 

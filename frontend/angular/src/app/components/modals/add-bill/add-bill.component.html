@@ -1,0 +1,29 @@
+<form [formGroup]="billDetailsForm" (ngSubmit)="onSubmitBill()">
+  <mat-form-field>
+    <input matInput formControlName="amount" type="number" placeholder="Amount">
+  </mat-form-field>
+  <mat-label>Intake</mat-label><mat-checkbox formControlName="intake"></mat-checkbox>
+  <label>Digital</label><mat-checkbox formControlName="digital"></mat-checkbox>
+  <label>Paid</label><mat-checkbox formControlName="paid"></mat-checkbox>
+  <mat-form-field>
+    <input [matDatepicker]="date_order_date_picker" matInput formControlName="date_order" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="date_order_date_picker"></mat-datepicker-toggle>
+    <mat-datepicker #date_order_date_picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input [matDatepicker]="date_paid_date_picker" matInput formControlName="date_paid" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="date_paid_date_picker"></mat-datepicker-toggle>
+    <mat-datepicker #date_paid_date_picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="ordered_by" placeholder="Buyer">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="seller" placeholder="Seller">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="products" placeholder="Products">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!isFormValid()">Submit</button>
+</form>
+

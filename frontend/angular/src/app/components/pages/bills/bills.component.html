@@ -1,3 +1,10 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <p><b>Tools: </b></p>
+    <button mat-raised-button color="primary" (click)="openAddBill()" style="margin: 5%">Add Bill</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <!--Bill Data Table-->
 <table mat-table [dataSource]="bills">
   <!-- Id Column -->

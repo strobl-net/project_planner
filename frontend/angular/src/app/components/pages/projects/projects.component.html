@@ -1,3 +1,9 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+  <p><b>Tools: </b></p>
+</mat-toolbar-row>
+</mat-toolbar>
+
 <mat-grid-list cols="3" rowHeight="2:1">
   <div *ngFor="let project of projects | async">
     <mat-grid-tile>
@@ -8,7 +14,7 @@
         <a routerLink="/project/{{project.id}}"><img src="{{project.image}}" alt="" width="40%" height="40%"></a>
         <div style="float: right; width: 50%"> {{project.description | slice : 0: 300}}...</div>
         <mat-card-content>
-          <p> <b class="text-secondary">{{project.member_ids.length}} Members</b></p>
+          <p><b class="text-secondary">{{project.member_ids.length}} Members</b></p>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
