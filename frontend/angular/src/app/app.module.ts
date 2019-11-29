@@ -39,6 +39,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { AddBillComponent } from './components/modals/add-bill/add-bill.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @NgModule({
   declarations: [
@@ -85,12 +88,13 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    PerfectScrollbarModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]

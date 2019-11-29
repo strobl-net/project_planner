@@ -63,7 +63,7 @@ export class BillsComponent implements OnInit {
   };
 
   public openAddBill(): void {
-    this.dialog.open(AddBillComponent, {data: {}}).afterClosed().subscribe(
+    this.dialog.open(AddBillComponent, {width: '30%', height: '60%',data: {}}).afterClosed().subscribe(
       result => {
         this.refresh()
       }
