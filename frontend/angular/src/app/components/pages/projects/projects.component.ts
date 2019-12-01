@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {Project} from "./project.model.temp";
+import {Project} from "../../../services/projects/project.model";
 import {ProjectService} from "../../../services/projects/project.service";
 
 @Component({

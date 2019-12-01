@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Project} from "../projects/project.model.temp";
+import {Project} from "../../../services/projects/project.model";
 import {ProjectService} from "../../../services/projects/project.service";
 import {Observable, Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";

@@ -2,6 +2,17 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {BillsComponent} from "../../pages/bills/bills.component";
 import {FormBuilder, FormArray, FormGroup, Validators, FormControl} from "@angular/forms";
+import {Bill} from "../../../services/bills/bill.model.temp";
+import {BillService} from "../../../services/bills/bill.service";
+import {ProductService} from "../../../services/products/product.service";
+import {Product} from "../../../services/products/product.model";
+import {debounceTime} from "rxjs/operators";
+import {Project} from "../../../services/projects/project.model";
+import {ProjectService} from "../../../services/projects/project.service";
+import {UserService} from "../../../services/auth/user.service";
+import {UserModel} from "../../../services/auth/user.model.temp";
+import {Seller} from "../../../services/sellers/seller.model";
+import {SellerService} from "../../../services/sellers/seller.service";
 
 @Component({
   selector: 'app-add-bill',
@@ -12,12 +23,62 @@ export class AddBillComponent implements OnInit {
   billForm: FormGroup;
   debug: boolean = false;
 
-  constructor(public fb: FormBuilder, private matDialogRed: MatDialogRef<BillsComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  bill: Bill;
+
+  possibleProjects: Project[];
+  selectedProject: Project;
+
+  possibleBuyers: UserModel[];
+  selectedBuyer: UserModel;
+
+  possibleSellers: Seller[];
+  selectedSeller: Seller;
+
+  current_product_id = 0;
+  product_ids: number[];
+  possibleProducts: Product[][];
+  selectedProducts: Product[];
+
+  constructor(public fb: FormBuilder, private matDialogRed: MatDialogRef<BillsComponent>,
+              @Inject(MAT_DIALOG_DATA) public data, private projectService: ProjectService, private billService: BillService,
+              private productService: ProductService, private userService: UserService, private sellerService: SellerService) {
   }
 
   onSubmitBill() {
     console.log("submitted")
   }
+
+
+  getSearchedProjects = (search: string) => {
+    this.projectService.getSearched(search).subscribe(
+      data => {
+        this.possibleProjects = data;
+      },
+      error => {
+        console.log(error);
+      })
+  };
+
+  getSearchedUser = (search: string) => {
+    this.userService.getSearched(search).subscribe(
+      data => {
+        this.possibleBuyers = data;
+      },
+      error => {
+        console.log(error);
+      })
+  };
+
+
+  getSearchedSeller = (search: string) => {
+    this.sellerService.getSearched(search).subscribe(
+      data => {
+        this.possibleSellers = data;
+      },
+      error => {
+        console.log(error);
+      })
+  };
 
   ngOnInit() {
     const billBool = this.fb.group({
@@ -35,6 +96,36 @@ export class AddBillComponent implements OnInit {
       billBool,
       products: this.fb.array([], []),
     });
+    this.billForm.get('project').valueChanges
+      .pipe(
+        debounceTime(500),
+      )
+      .subscribe(
+        result => {
+          this.getSearchedProjects(result);
+          console.log(result);
+          console.log("----");
+          console.log(this.possibleProjects);
+        },
+      );
+    this.billForm.get('ordered_by').valueChanges
+      .pipe(
+        debounceTime(500),
+      )
+      .subscribe(
+        result => {
+          this.getSearchedUser(result);
+        },
+      );
+    this.billForm.get('seller').valueChanges
+      .pipe(
+        debounceTime(500),
+      )
+      .subscribe(
+        result => {
+          this.getSearchedSeller(result);
+        },
+      );
   }
 
   get amount() {
@@ -73,11 +164,12 @@ export class AddBillComponent implements OnInit {
     this.productForms.push(product);
   }
 
+
   deleteProduct(i: number) {
     this.productForms.removeAt(i)
   }
 
-  public close() {
+  close() {
     this.matDialogRed.close();
   }
 }

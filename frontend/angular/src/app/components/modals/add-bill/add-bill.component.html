@@ -1,4 +1,4 @@
-<form [formGroup]="billForm" (ngSubmit)="onSubmitBill()">
+<form [formGroup]="billForm">
   <div *ngIf="debug">
     Values: {{billForm.value | json}}
     <pre>{{billForm.get('amount').valid}}</pre>
@@ -16,7 +16,12 @@
     <input matInput formControlName="amount" type="number" placeholder="Amount">
   </mat-form-field>
   <mat-form-field>
-    <input matInput formControlName="project" type="text" placeholder="Project">
+    <input matInput formControlName="project" type="text" [matAutocomplete]="autoProject" placeholder="Project">
+    <mat-autocomplete #autoProject="matAutocomplete">
+      <mat-option *ngFor="let project of possibleProjects" [value]="project.name">
+        {{project.name}}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <div formGroupName="billBool" style="left: 20%">
     <mat-checkbox formControlName="intake">Intake</mat-checkbox>
@@ -34,20 +39,29 @@
     <mat-datepicker #date_paid_date_picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field>
-    <input matInput formControlName="ordered_by" placeholder="Buyer">
+    <input matInput formControlName="ordered_by" [matAutocomplete]="autoBuyer" placeholder="Buyer">
+    <mat-autocomplete #autoBuyer="matAutocomplete">
+      <mat-option *ngFor="let buyer of possibleBuyers" [value]="buyer.username">
+        {{buyer.username}}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <mat-form-field>
-    <input matInput formControlName="seller" placeholder="Seller">
+    <input matInput formControlName="seller" [matAutocomplete]="autoSeller" placeholder="Seller">
+        <mat-autocomplete #autoSeller="matAutocomplete">
+      <mat-option *ngFor="let seller of possibleSellers" [value]="seller.name">
+        {{seller.name}}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <br>
-
   <mat-grid-list cols="3" rowHeight="1:1.2">
     <mat-grid-tile colspan="2">
 
       <perfect-scrollbar formArrayName="products">
         <div *ngFor="let product of productForms.controls; let i = index" [formGroupName]="i">
           <mat-form-field>
-            <input matInput type="text" formControlName="name" placeholder="Product Name">
+            <input matInput type="text" formControlName="Product name" placeholder="Product Name">
           </mat-form-field>
           <mat-form-field>
             <input matInput type="number" formControlName="amount" placeholder="Amount">
@@ -57,13 +71,11 @@
         </div>
       </perfect-scrollbar>
     </mat-grid-tile>
-
     <mat-grid-tile class="btn-group">
       <button mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
-
     </mat-grid-tile>
   </mat-grid-list>
-  <button mat-raised-button color="primary" type="submit" [disabled]="billForm.invalid" style="left: 75%">Submit</button>
-
+  <button mat-raised-button color="primary" (click)="onSubmitBill()" type="submit" [disabled]="billForm.invalid"
+          style="left: 75%">Submit
+  </button>
 </form>
-
