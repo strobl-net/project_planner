@@ -42,6 +42,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
     MatDatepickerModule,
     MatNativeDateModule,
     PerfectScrollbarModule,
+    MatAutocompleteModule,
   ],
   providers: [
     {

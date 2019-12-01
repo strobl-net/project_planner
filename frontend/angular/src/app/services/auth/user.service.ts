@@ -22,4 +22,8 @@ export class UserService {
   getByID(id: number): Observable<UserModel> {
     return this.http.get<UserModel>(this.url_get, {params: {id: id.toString()}})
   }
+
+  getSearched(parameter: string): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(this.url_get + "?search=" + parameter)
+  }
 }
