@@ -9,10 +9,10 @@ class SellerView(viewsets.ModelViewSet):
     serializer_class = SellerSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['id', 'name', 'area', 'added']
-    search_fields = ['id', 'name', 'area', 'added']
+    search_fields = ['name', 'area']
 
     def get_queryset(self):
-        return self.queryset
+        return self.queryset.order_by('id')
 
     def perform_create(self, serializer):
         serializer.save(lead=self.request.user)

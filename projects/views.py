@@ -11,11 +11,11 @@ class ProjectView(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['lead']
-    search_fields = ['name', 'description']
+    filterset_fields = ['name', 'lead']
+    search_fields = ['name']
 
     def get_queryset(self):
-        return self.queryset
+        return self.queryset.order_by('id')
 
     def perform_create(self, serializer):
         serializer.save(lead=self.request.user)

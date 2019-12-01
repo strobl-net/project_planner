@@ -15,4 +15,4 @@ class UserView(viewsets.ReadOnlyModelViewSet):
     search_fields = ['username', 'first_name', 'last_name', 'email', 'is_staff', 'is_active']
 
     def get_queryset(self):
-        return self.queryset
+        return self.queryset.order_by('id')
