@@ -6,7 +6,7 @@ import {Bill} from "../../../services/bills/bill.model.temp";
 import {BillService} from "../../../services/bills/bill.service";
 import {ProductService} from "../../../services/products/product.service";
 import {Product} from "../../../services/products/product.model";
-import {debounceTime} from "rxjs/operators";
+import {debounceTime, finalize, startWith} from "rxjs/operators";
 import {Project} from "../../../services/projects/project.model";
 import {ProjectService} from "../../../services/projects/project.service";
 import {UserService} from "../../../services/auth/user.service";
@@ -22,7 +22,7 @@ import {SellerService} from "../../../services/sellers/seller.service";
 export class AddBillComponent implements OnInit {
   billForm: FormGroup;
   debug: boolean = false;
-
+  isLoadingProducts: boolean = false;
   bill: Bill;
 
   possibleProjects: Project[];
@@ -34,8 +34,8 @@ export class AddBillComponent implements OnInit {
   possibleSellers: Seller[];
   selectedSeller: Seller;
 
-  current_product_id = 0;
-  product_ids: number[];
+  input: Product[];
+  tempProducts: Product[];
   possibleProducts: Product[][];
   selectedProducts: Product[];
 
@@ -69,7 +69,6 @@ export class AddBillComponent implements OnInit {
       })
   };
 
-
   getSearchedSeller = (search: string) => {
     this.sellerService.getSearched(search).subscribe(
       data => {
@@ -78,6 +77,29 @@ export class AddBillComponent implements OnInit {
       error => {
         console.log(error);
       })
+  };
+
+  getSearchedProducts(search: string[]) {
+    this.productService.getMultipleSearched(search)
+      .pipe(
+        finalize(() => {
+          console.log("==========");
+          console.log("complete");
+          console.log(this.possibleProducts);
+          console.log("==========");
+        }),
+      )
+      .subscribe(
+        data => {
+          for (let dat of data) {
+          }
+          this.possibleProducts = data;
+          this.isLoadingProducts = false;
+        },
+        error => {
+          console.log(error);
+          this.isLoadingProducts = false;
+        });
   };
 
   ngOnInit() {
@@ -103,9 +125,6 @@ export class AddBillComponent implements OnInit {
       .subscribe(
         result => {
           this.getSearchedProjects(result);
-          console.log(result);
-          console.log("----");
-          console.log(this.possibleProjects);
         },
       );
     this.billForm.get('ordered_by').valueChanges
@@ -125,6 +144,22 @@ export class AddBillComponent implements OnInit {
         result => {
           this.getSearchedSeller(result);
         },
+      );
+    this.billForm.get('products').valueChanges
+      .pipe(
+        startWith(""),
+        debounceTime(500),
+      )
+      .subscribe(
+        nameAndAmountInputArray => {
+          this.isLoadingProducts = true;
+          let tempInputNames: string[] = [];
+          for (let nameAndAmountInput of nameAndAmountInputArray) {
+            tempInputNames.push(nameAndAmountInput.name)
+          }
+          this.getSearchedProducts(tempInputNames);
+          console.log(this.possibleProducts)
+        }
       );
   }
 
@@ -163,7 +198,6 @@ export class AddBillComponent implements OnInit {
     });
     this.productForms.push(product);
   }
-
 
   deleteProduct(i: number) {
     this.productForms.removeAt(i)

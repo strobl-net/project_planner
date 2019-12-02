@@ -48,7 +48,7 @@
   </mat-form-field>
   <mat-form-field>
     <input matInput formControlName="seller" [matAutocomplete]="autoSeller" placeholder="Seller">
-        <mat-autocomplete #autoSeller="matAutocomplete">
+    <mat-autocomplete #autoSeller="matAutocomplete">
       <mat-option *ngFor="let seller of possibleSellers" [value]="seller.name">
         {{seller.name}}
       </mat-option>
@@ -61,7 +61,15 @@
       <perfect-scrollbar formArrayName="products">
         <div *ngFor="let product of productForms.controls; let i = index" [formGroupName]="i">
           <mat-form-field>
-            <input matInput type="text" formControlName="Product name" placeholder="Product Name">
+            <input matInput type="text" formControlName="name" [matAutocomplete]="autoProduct"
+                   placeholder="Product Name">
+            <mat-autocomplete #autoProduct="matAutocomplete">
+              <ng-container *ngIf="!isLoadingProducts">
+                <mat-option *ngFor="let product of possibleProducts[i]" [value]="product.name">
+                  {{product.name}}
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
           </mat-form-field>
           <mat-form-field>
             <input matInput type="number" formControlName="amount" placeholder="Amount">
