@@ -21,6 +21,14 @@ export class ProductService {
     return this.http.get<Product[]>(this.url + "?search=" + parameter);
   }
 
+  getMultipleSearched(parameters: string[]): Observable<any> {
+    let responseCollection = [];
+    parameters.forEach(parameter =>
+      responseCollection.push(this.http.get<Observable<Product[]>>(this.url + "?search=" + parameter))
+    );
+    return forkJoin(responseCollection);
+  }
+
   getByName(parameter: string): Observable<Product[]> {
     return this.http.get<Product[]>(this.url + "?name=" + parameter);
   }
