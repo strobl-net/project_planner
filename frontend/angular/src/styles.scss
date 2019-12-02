@@ -7,6 +7,28 @@ body {
   flex-grow: 1;
 }
 
-.full-width {
-  width: 100%;
+.nearly-full-width {
+  width: 80%;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.flex-item {
+  padding: 5px;
+  width: 60px;
+  height: 50px;
+  margin: 5px;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
 }
