@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserAuth} from "./user.auth.model";
 import {Observable} from "rxjs";
-//import * as moment from "moment";
 
 @Injectable({
   providedIn: 'root'

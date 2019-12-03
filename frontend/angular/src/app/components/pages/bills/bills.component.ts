@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BillService} from "../../../services/bills/bill.service";
 import {Bill} from "../../../services/bills/bill.model.temp";
-import {ProductService} from "../../../services/products/product.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddBillModalComponent} from "../../modals/add-bill-modal/add-bill-modal.component";
 
@@ -26,7 +25,8 @@ export class BillsComponent implements OnInit {
   constructor(private bill_service: BillService,
               public dialog: MatDialog,
               private changeDetectorRef: ChangeDetectorRef,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.refresh();

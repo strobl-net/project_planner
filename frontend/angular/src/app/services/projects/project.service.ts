@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Project} from "./project.model";
 import {Observable} from "rxjs";
-import {forkJoin} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
