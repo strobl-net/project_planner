@@ -3,7 +3,7 @@ import {BillService} from "../../../services/bills/bill.service";
 import {Bill} from "../../../services/bills/bill.model.temp";
 import {ProductService} from "../../../services/products/product.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AddBillComponent} from "../../modals/add-bill/add-bill.component";
+import {AddBillModalComponent} from "../../modals/add-bill-modal/add-bill-modal.component";
 
 
 @Component({
@@ -46,7 +46,7 @@ export class BillsComponent implements OnInit {
 
 
   public openAddBill(): void {
-    this.dialog.open(AddBillComponent, {width: '60%', height: '80%'}).afterClosed().subscribe(
+    this.dialog.open(AddBillModalComponent, {width: '60%', height: '80%'}).afterClosed().subscribe(
       result => {
         this.refresh();
       }

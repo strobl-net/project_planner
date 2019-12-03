@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddBillComponent } from './add-bill.component';
+import { AddBillModalComponent } from './add-bill-modal.component';
 
 describe('AddBillComponent', () => {
-  let component: AddBillComponent;
-  let fixture: ComponentFixture<AddBillComponent>;
+  let component: AddBillModalComponent;
+  let fixture: ComponentFixture<AddBillModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddBillComponent ]
+      declarations: [ AddBillModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddBillComponent);
+    fixture = TestBed.createComponent(AddBillModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -36,7 +36,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { AddBillComponent } from './components/modals/add-bill/add-bill.component';
+import { AddBillModalComponent } from './components/modals/add-bill-modal/add-bill-modal.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -59,9 +59,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     LogoutComponent,
     BillDetailComponent,
     NavbarComponent,
-    AddBillComponent,
+    AddBillModalComponent,
   ],
-  entryComponents: [AddBillComponent],
+  entryComponents: [AddBillModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

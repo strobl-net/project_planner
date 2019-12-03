@@ -16,10 +16,10 @@ import {SellerService} from "../../../services/sellers/seller.service";
 
 @Component({
   selector: 'app-add-bill',
-  templateUrl: './add-bill.component.html',
-  styleUrls: ['./add-bill.component.scss']
+  templateUrl: './add-bill-modal.component.html',
+  styleUrls: ['./add-bill-modal.component.scss']
 })
-export class AddBillComponent implements OnInit {
+export class AddBillModalComponent implements OnInit {
   billForm: FormGroup;
   debug: boolean = false;
   isLoadingProducts: boolean = false;
