@@ -45,62 +45,35 @@ export class AddBillModalComponent implements OnInit {
   }
 
   onSubmitBill() {
+    let billNew = new Bill();
+    billNew.intake = this.billBools.get('intake').value;
+    billNew.digital = this.billBools.get('digital').value;
+    billNew.paid = this.billBools.get('paid').value;
+    billNew.amount = this.amount.value;
+    billNew.project = this.possibleProjects[0].id;
+    billNew.date_order = this.date_order.value;
+    billNew.date_paid = this.date_paid.value;
+    billNew.ordered_by = this.ordered_by.value;
+    billNew.seller = this.possibleSellers[0].id;
+    let products_local = this.productForms.value;
+
+    let productsArray: Product[][] = this.possibleProducts;
+    let productsIDArray: number[] = [];
+    for (let product_local of products_local) {
+      console.log("i");
+      for (let i = 0; i < productsArray.length; i++) {
+        console.log("j");
+        if (product_local.name == productsArray[i][0].name) {
+          for (let j = 0; j < product_local.amount; j++) {
+            productsIDArray.push(productsArray[i][0].id);
+          }
+        }
+      }
+    }
+    billNew.products = productsIDArray;
     console.log("submitted")
   }
 
-
-  getSearchedProjects = (search: string) => {
-    this.projectService.getSearched(search).subscribe(
-      data => {
-        this.possibleProjects = data;
-      },
-      error => {
-        console.log(error);
-      })
-  };
-
-  getSearchedUser = (search: string) => {
-    this.userService.getSearched(search).subscribe(
-      data => {
-        this.possibleBuyers = data;
-      },
-      error => {
-        console.log(error);
-      })
-  };
-
-  getSearchedSeller = (search: string) => {
-    this.sellerService.getSearched(search).subscribe(
-      data => {
-        this.possibleSellers = data;
-      },
-      error => {
-        console.log(error);
-      })
-  };
-
-  getSearchedProducts(search: string[]) {
-    this.productService.getMultipleSearched(search)
-      .pipe(
-        finalize(() => {
-          console.log("==========");
-          console.log("complete");
-          console.log(this.possibleProducts);
-          console.log("==========");
-        }),
-      )
-      .subscribe(
-        data => {
-          for (let dat of data) {
-          }
-          this.possibleProducts = data;
-          this.isLoadingProducts = false;
-        },
-        error => {
-          console.log(error);
-          this.isLoadingProducts = false;
-        });
-  };
 
   ngOnInit() {
     const billBool = this.fb.group({
@@ -158,9 +131,65 @@ export class AddBillModalComponent implements OnInit {
             tempInputNames.push(nameAndAmountInput.name)
           }
           this.getSearchedProducts(tempInputNames);
-          console.log(this.possibleProducts)
         }
       );
+  }
+
+  getSearchedProjects = (search: string) => {
+    this.projectService.getSearched(search).subscribe(
+      data => {
+        this.possibleProjects = data;
+      },
+      error => {
+        console.log(error);
+      })
+  };
+
+  getSearchedUser = (search: string) => {
+    this.userService.getSearched(search).subscribe(
+      data => {
+        this.possibleBuyers = data;
+      },
+      error => {
+        console.log(error);
+      })
+  };
+
+  getSearchedSeller = (search: string) => {
+    this.sellerService.getSearched(search).subscribe(
+      data => {
+        this.possibleSellers = data;
+      },
+      error => {
+        console.log(error);
+      })
+  };
+
+  getSearchedProducts(search: string[]) {
+    this.productService.getMultipleSearched(search)
+      .pipe(
+        finalize(() => {
+          // console.log("==========");
+          // console.log("complete");
+          // console.log(this.possibleProducts);
+          // console.log("==========");
+        }),
+      )
+      .subscribe(
+        data => {
+          for (let dat of data) {
+          }
+          this.possibleProducts = data;
+          this.isLoadingProducts = false;
+        },
+        error => {
+          console.log(error);
+          this.isLoadingProducts = false;
+        });
+  };
+
+  get billBools() {
+    return this.billForm.get('billBool');
   }
 
   get amount() {
