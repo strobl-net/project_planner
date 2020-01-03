@@ -60,6 +60,7 @@ export class AddBillModalComponent implements OnInit {
 
     billNew.ordered_by = this.possibleBuyers[0].id;
     billNew.seller = this.possibleSellers[0].id;
+    billNew.description = this.description.value;
     let products_local = this.productForms.value;
 
     let productsArray: Product[][] = this.possibleProducts;
@@ -92,6 +93,7 @@ export class AddBillModalComponent implements OnInit {
       date_paid: new FormControl(''),
       ordered_by: new FormControl('', [Validators.required]),
       seller: new FormControl('', [Validators.required]),
+      description: new FormControl(''),
       billBool,
       products: this.fb.array([], []),
     });
@@ -226,6 +228,10 @@ export class AddBillModalComponent implements OnInit {
 
   get seller() {
     return this.billForm.get('seller');
+  }
+
+  get description() {
+    return this.billForm.get('description');
   }
 
   get productForms() {

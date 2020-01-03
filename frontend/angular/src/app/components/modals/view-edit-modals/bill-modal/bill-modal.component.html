@@ -54,6 +54,9 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+  <mat-form-field class="nearly-full-width">
+    <textarea matInput formControlName="description" placeholder="Description"></textarea>
+  </mat-form-field>
   <br>
 
 
@@ -82,7 +85,8 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <button mat-raised-button color="primary" (click)="addProduct()" style="bottom:40%">Add Product</button>
-      <button mat-raised-button color="primary" (click)="onSubmitBill()" type="submit" [disabled]="billForm.invalid"
+      <button mat-raised-button color="primary" (click)="onSubmitBill()" type="submit changes"
+              [disabled]="billForm.invalid"
               style="right: 110px; bottom:25%">Submit
       </button>
     </mat-grid-tile>

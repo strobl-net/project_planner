@@ -62,6 +62,7 @@ export class BillModalComponent implements OnInit {
       date_paid: new FormControl(this.initBill.date_paid),
       ordered_by: new FormControl(this.initBill.ordered_by_name, [Validators.required]),
       seller: new FormControl(this.initBill.seller_name, [Validators.required]),
+      description: new FormControl(this.initBill.description),
       billBool,
       products: this.fb.array([], []),
     });
@@ -280,6 +281,10 @@ export class BillModalComponent implements OnInit {
 
   get seller() {
     return this.billForm.get('seller');
+  }
+
+  get description() {
+    return this.billForm.get('description');
   }
 
   get productForms() {
