@@ -29,6 +29,14 @@ export class ProductService {
     return forkJoin(responseCollection);
   }
 
+  getMultipleByID(ids: number[]): Observable<any> {
+    let responseCollection = [];
+    ids.forEach(id =>
+      responseCollection.push(this.http.get<Observable<Product>>(this.url + "?id=" + id))
+    );
+    return forkJoin(responseCollection);
+  }
+
   getByName(parameter: string): Observable<Product[]> {
     return this.http.get<Product[]>(this.url + "?name=" + parameter);
   }

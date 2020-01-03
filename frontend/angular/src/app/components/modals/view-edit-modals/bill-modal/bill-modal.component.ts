@@ -38,6 +38,10 @@ export class BillModalComponent implements OnInit {
   input: Product[] = [];
   possibleProducts: Product[][] = [[]];
 
+  initProductAmounts: number[] = [];
+  initProductIDs: number[] = [];
+  initProducts: Product[][] = [[]];
+
   constructor(public fb: FormBuilder, private matDialogRef: MatDialogRef<BillsComponent>,
               @Inject(MAT_DIALOG_DATA) public data, private projectService: ProjectService,
               private billService: BillService, private productService: ProductService,
@@ -110,6 +114,38 @@ export class BillModalComponent implements OnInit {
       );
   }
 
+  setupProducts() {
+    'use strict';
+
+    //ex: [1, 1, 2]
+    let productsArray = this.initBill.products;
+
+    //ex: {1: 2, 2: 1}
+    let dictOfProducts = {};
+    for (let productID of productsArray) {
+      if (!(productID in dictOfProducts)) {
+        dictOfProducts[productID] = 1;
+      } else {
+        dictOfProducts[productID] += 1;
+      }
+    }
+    //ex: [1, 2] (keys)
+    //ex: [2, 1] (values)
+    for (const [key, value] of Object.entries(dictOfProducts)) {
+      this.initProductIDs.push(+key);
+      this.initProductAmounts.push(+value);
+    }
+    this.initFirstProducts(this.initProductIDs);
+  }
+
+  setupDisplayProducts() {
+    this.possibleProducts = this.initProducts;
+    for (let i = 0; i < this.initProducts.length; i++) {
+      let tmp_name: string = this.initProducts[i][0].name;
+      this.addProductWithValues(this.initProductAmounts[i], tmp_name)
+    }
+  }
+
   onSubmitBill() {
     let billNew = new Bill();
     billNew.intake = this.billBools.get('intake').value;
@@ -119,11 +155,9 @@ export class BillModalComponent implements OnInit {
     billNew.project = this.possibleProjects[0].id;
 
     let date_order: string = moment(this.date_order.value).format('YYYY-MM-DD');
-    console.log(date_order);
     billNew.date_order = date_order;
 
     let date_paid: string = moment(this.date_paid.value).format('YYYY-MM-DD');
-    console.log(date_paid);
     if (date_paid != "Invalid date") {
       billNew.date_paid = date_paid;
     }
@@ -206,6 +240,7 @@ export class BillModalComponent implements OnInit {
           console.log(this.initBill);
           this.isLoading = false;
           this.setupForm();
+          this.setupProducts();
           this.initFirstProject(data.project);
           this.initFirstSeller(data.seller);
           this.initFirstBuyer(data.ordered_by);
@@ -235,8 +270,16 @@ export class BillModalComponent implements OnInit {
   initFirstBuyer = (id: number) => {
     this.userService.getByID(id).subscribe(
       data => {
-        console.log(data);
         this.possibleBuyers[0] = data;
+      }
+    )
+  };
+
+  initFirstProducts = (ids: number[]) => {
+    this.productService.getMultipleByID(ids).subscribe(
+      data => {
+        this.initProducts = data;
+        this.setupDisplayProducts();
       }
     )
   };
@@ -295,6 +338,15 @@ export class BillModalComponent implements OnInit {
     let product = this.fb.group({
       amount: new FormControl(1, [Validators.required]),
       name: new FormControl('', [Validators.required])
+    });
+    this.productForms.push(product);
+  }
+
+  addProductWithValues(amount: number, name: string) {
+    console.log(name);
+    let product = this.fb.group({
+      amount: new FormControl(amount, [Validators.required]),
+      name: new FormControl(name, [Validators.required])
     });
     this.productForms.push(product);
   }
