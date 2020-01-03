@@ -43,6 +43,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { BillModalComponent } from './components/modals/view-edit-modals/bill-modal/bill-modal.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     AddBillModalComponent,
     LoginModalComponent,
     AddProjectModalComponent,
+    BillModalComponent,
   ],
   entryComponents: [AddBillModalComponent, AddProjectModalComponent, LoginModalComponent],
   imports: [
