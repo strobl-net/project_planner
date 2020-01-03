@@ -12,8 +12,8 @@ export class Bill {
   project_name: string;
   seller: number;
   seller_name: string;
-  date_order: any;
-  date_paid: any;
+  date_order: string;
+  date_paid: string;
   created: any;
   description: string;
   image: string;
