@@ -1,5 +1,6 @@
-from bills.models import Bill
 from rest_framework import viewsets, permissions
+
+from bills.models import Bill
 from .serializers import BillSerializer
 
 

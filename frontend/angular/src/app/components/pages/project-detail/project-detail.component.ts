@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from "../../../services/projects/project.model";
 import {ProjectService} from "../../../services/projects/project.service";
-import {Observable, Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -27,7 +26,7 @@ export class ProjectDetailComponent implements OnInit {
 
   load_project = () => {
     this.project_loading = true;
-        this.pro_service.getByID(this.project_id).subscribe(
+    this.pro_service.getByID(this.project_id).subscribe(
       data => {
         this.project = data;
         this.project_loading = false;

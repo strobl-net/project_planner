@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'bills', component: BillsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'logout', component:LogoutComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: '**', component: NotfoundComponent},
 ];
 

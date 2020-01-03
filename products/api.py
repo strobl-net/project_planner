@@ -1,5 +1,6 @@
-from projects.models import Project
 from rest_framework import viewsets, permissions
+
+from projects.models import Project
 from .serializers import ProductSerializer
 
 

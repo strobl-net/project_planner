@@ -1,7 +1,8 @@
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils import timezone
 from djmoney.models.fields import MoneyField
-from django.contrib.postgres.fields import ArrayField
+
 from sellers.models import Seller
 
 
@@ -14,4 +15,4 @@ class Product(models.Model):
     added = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f'{self.name + ":", self.current_price, " from " + self.seller.name + ":"+ self.seller.area}'
+        return f'{self.name + ":", self.current_price, " from " + self.seller.name + ":" + self.seller.area}'

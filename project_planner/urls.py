@@ -1,18 +1,18 @@
-from django.contrib import admin
-from django.conf.urls import url, include
-from django.shortcuts import render
-from django.conf.urls.static import static
 from django.conf import settings
-from rest_framework import routers
-from projects import views as project_views
-from bills import views as bill_views
-from profiles import views as profile_views
-from products import views as product_views
-from sellers import views as seller_views
-from accounts import views as account_views
-from users import views as user_views
-from knox import views as knox_views
+from django.conf.urls import include
+from django.conf.urls.static import static
+from django.contrib import admin
 from django.urls import path
+from knox import views as knox_views
+from rest_framework import routers
+
+from accounts import views as account_views
+from bills import views as bill_views
+from products import views as product_views
+from profiles import views as profile_views
+from projects import views as project_views
+from sellers import views as seller_views
+from users import views as user_views
 
 router = routers.DefaultRouter()
 router.register('api/projects', project_views.ProjectView)

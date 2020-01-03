@@ -1,11 +1,12 @@
+from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
 from djmoney.models.fields import MoneyField
+
+from products.models import Product
 from projects.models import Project
 from sellers.models import Seller
-from products.models import Product
-from django.contrib.postgres.fields import ArrayField
 
 
 class Bill(models.Model):

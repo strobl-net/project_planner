@@ -1,13 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ProjectsComponent} from "../../pages/projects/projects.component";
-import {ProjectService} from "../../../services/projects/project.service";
-import {Project} from "../../../services/projects/project.model";
-import {UserModel} from "../../../services/auth/user.model.temp";
-import {UserService} from "../../../services/auth/user.service";
-import {debounceTime, finalize, startWith} from "rxjs/operators";
-import {Bill} from "../../../services/bills/bill.model.temp";
+import {ProjectsComponent} from "../../../pages/projects/projects.component";
+import {ProjectService} from "../../../../services/projects/project.service";
+import {Project} from "../../../../services/projects/project.model";
+import {UserModel} from "../../../../services/auth/user.model.temp";
+import {UserService} from "../../../../services/auth/user.service";
+import {debounceTime, finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-add-project-modal',
@@ -17,13 +16,11 @@ import {Bill} from "../../../services/bills/bill.model.temp";
 export class AddProjectModalComponent implements OnInit {
 
   projectForm: FormGroup;
-  project: Project;
 
   isLoadingMembers: boolean = false;
 
   possibleLeaders: UserModel[];
   possibleMembers: UserModel[][];
-  possibleSelectUsers: UserModel[];
 
 
   constructor(public fb: FormBuilder, private matDialogRef: MatDialogRef<ProjectsComponent>,
@@ -108,7 +105,7 @@ export class AddProjectModalComponent implements OnInit {
     )
   };
 
-    createPost = (project: Project) => {
+  createPost = (project: Project) => {
     this.project_service.post(project).subscribe(
       (val) => {
         console.log("Post call successfully value returned in body", val);

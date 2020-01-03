@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {Project} from "../../../services/projects/project.model";
 import {ProjectService} from "../../../services/projects/project.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AddProjectModalComponent} from "../../modals/add-project-modal/add-project-modal.component";
+import {AddProjectModalComponent} from "../../modals/add-modals/add-project-modal/add-project-modal.component";
 
 @Component({
   selector: 'app-projects',

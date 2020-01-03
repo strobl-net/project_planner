@@ -1,7 +1,7 @@
+from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils import timezone
-from django.contrib.postgres.fields import ArrayField
-from django.contrib.auth.models import User
 
 
 class Project(models.Model):
@@ -20,7 +20,7 @@ class Project(models.Model):
         else:
             mem_or_mems = "members"
 
-        return f'{self.name + " with "+ str(self.member_ids.__len__()) + " " + mem_or_mems}'
+        return f'{self.name + " with " + str(self.member_ids.__len__()) + " " + mem_or_mems}'
 
     def get_lead(self):
         return self.lead_id

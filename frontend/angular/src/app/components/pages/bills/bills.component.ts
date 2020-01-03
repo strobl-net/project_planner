@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BillService} from "../../../services/bills/bill.service";
 import {Bill} from "../../../services/bills/bill.model.temp";
 import {MatDialog} from "@angular/material/dialog";
-import {AddBillModalComponent} from "../../modals/add-bill-modal/add-bill-modal.component";
+import {AddBillModalComponent} from "../../modals/add-modals/add-bill-modal/add-bill-modal.component";
 
 
 @Component({

@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     'bills',
     'products',
     'sellers',
-    'chats',
-    'chat_messages',
     'profiles',
     'accounts',
 ]

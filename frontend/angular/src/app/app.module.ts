@@ -15,7 +15,6 @@ import {ProjectDetailComponent} from './components/pages/project-detail/project-
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./services/auth/auth.interceptor";
 import {LogoutComponent} from './components/pages/logout/logout.component';
-import {BillDetailComponent} from './components/pages/bill-detail/bill-detail.component';
 import {MatSliderModule} from "@angular/material/slider";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NavbarComponent} from './components/skeletal/navbar/navbar.component';
@@ -36,12 +35,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { AddBillModalComponent } from './components/modals/add-bill-modal/add-bill-modal.component';
-import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
-import { AddProjectModalComponent } from './components/modals/add-project-modal/add-project-modal.component';
+import {AddBillModalComponent} from './components/modals/add-modals/add-bill-modal/add-bill-modal.component';
+import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
+import {AddProjectModalComponent} from './components/modals/add-modals/add-project-modal/add-project-modal.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
@@ -58,7 +57,6 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     RegisterComponent,
     ProjectDetailComponent,
     LogoutComponent,
-    BillDetailComponent,
     NavbarComponent,
     AddBillModalComponent,
     LoginModalComponent,
