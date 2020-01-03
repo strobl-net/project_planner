@@ -13,6 +13,10 @@ export class BillService {
   constructor(private http: HttpClient) {
   }
 
+  post(bill: Bill): Observable<Bill> {
+    return this.http.post<Bill>(this.url, bill)
+  }
+
   getAll(): Observable<Bill[]> {
     return this.http.get<Bill[]>(this.url);
   }
