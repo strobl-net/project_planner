@@ -18,7 +18,7 @@ class Bill(models.Model):
     seller = models.ForeignKey(Seller, related_name='bills', on_delete=models.SET_NULL, null=True)
     products = ArrayField(models.IntegerField(), default=None, null=False, blank=True)
     date_order = models.DateField()
-    date_paid = models.DateField(blank=True)
+    date_paid = models.DateField(blank=True, null=True)
     created = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/bills', null=True, blank=True)
