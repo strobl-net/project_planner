@@ -76,7 +76,7 @@ export class AddBillModalComponent implements OnInit {
 
     billNew.products = productsIDArray;
     console.log(billNew);
-    this.createPost(billNew);
+    this.createBill(billNew);
   }
 
   ngOnInit() {
@@ -169,7 +169,7 @@ export class AddBillModalComponent implements OnInit {
       })
   };
 
-  createPost = (bill: Bill) => {
+  createBill = (bill: Bill) => {
     this.billService.post(bill).subscribe(
       (val) => {
         console.log("Post call successfully value returned in body", val);
@@ -187,16 +187,10 @@ export class AddBillModalComponent implements OnInit {
     this.productService.getMultipleSearched(search)
       .pipe(
         finalize(() => {
-          // console.log("==========");
-          // console.log("complete");
-          // console.log(this.possibleProducts);
-          // console.log("==========");
         }),
       )
       .subscribe(
         data => {
-          for (let dat of data) {
-          }
           this.possibleProducts = data;
           this.isLoadingProducts = false;
         },

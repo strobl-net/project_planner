@@ -14,7 +14,11 @@ export class BillService {
   }
 
   post(bill: Bill): Observable<Bill> {
-    return this.http.post<Bill>(this.url, bill)
+    return this.http.post<Bill>(this.url, bill);
+  }
+
+  put(id: number, bill: Bill): Observable<Bill> {
+    return this.http.put<Bill>(this.url + id + "/", bill);
   }
 
   getAll(): Observable<Bill[]> {

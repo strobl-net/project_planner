@@ -55,7 +55,6 @@ export class BillsComponent implements OnInit {
   }
 
   public openBillView(id: number): void {
-    console.log(id);
     this.dialog.open(BillModalComponent, {width: '60%', height: '80', data: id}).afterClosed().subscribe(
       result => {
         this.refresh();

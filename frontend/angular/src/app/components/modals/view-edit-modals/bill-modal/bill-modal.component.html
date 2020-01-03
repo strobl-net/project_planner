@@ -1,1 +1,90 @@
-<p>bill-modal works!</p>
+<form [formGroup]="billForm" *ngIf="!isLoading">
+  <div *ngIf="debug">
+    Values: {{billForm.value | json}}
+    <pre>{{billForm.get('amount').valid}}</pre>
+    <pre>{{billForm.get('billBool').get('intake').valid}}</pre>
+    <pre>{{billForm.get('billBool').get('digital').valid}}</pre>
+    <pre>{{billForm.get('billBool').get('paid').valid}}</pre>
+    <pre>{{billForm.get('date_order').valid}}</pre>
+    <pre>{{billForm.get('date_paid').valid}}</pre>
+    <pre>{{billForm.get('ordered_by').valid}}</pre>
+    <pre>{{billForm.get('seller').valid}}</pre>
+    <pre>Form: {{billForm.valid}}</pre>
+  </div>
+
+  <mat-form-field class="nearly-full-width">
+    <input matInput formControlName="amount" type="number" placeholder="Amount">
+  </mat-form-field>
+  <mat-form-field class="nearly-full-width">
+    <input matInput formControlName="project" type="text" [matAutocomplete]="autoProject" placeholder="Project">
+    <mat-autocomplete #autoProject="matAutocomplete">
+      <mat-option *ngFor="let project of possibleProjects" [value]="project.name">
+        {{project.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div formGroupName="billBool">
+    <mat-slide-toggle formControlName="intake" style="padding-left: 2%">Intake</mat-slide-toggle>
+    <mat-slide-toggle formControlName="digital" style="padding-left: 3%">Digital</mat-slide-toggle>
+    <mat-slide-toggle formControlName="paid" style="padding-left: 3%">Paid</mat-slide-toggle>
+  </div>
+  <mat-form-field>
+    <input [matDatepicker]="date_order_date_picker" formControlName="date_order" matInput placeholder="Date of Order">
+    <mat-datepicker-toggle matSuffix [for]="date_order_date_picker"></mat-datepicker-toggle>
+    <mat-datepicker #date_order_date_picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input [matDatepicker]="date_paid_date_picker" matInput formControlName="date_paid" placeholder="Date of Payment">
+    <mat-datepicker-toggle matSuffix [for]="date_paid_date_picker"></mat-datepicker-toggle>
+    <mat-datepicker #date_paid_date_picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="nearly-full-width">
+    <input matInput formControlName="ordered_by" [matAutocomplete]="autoBuyer" placeholder="Buyer">
+    <mat-autocomplete #autoBuyer="matAutocomplete">
+      <mat-option *ngFor="let buyer of possibleBuyers" [value]="buyer.username">
+        {{buyer.username}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="nearly-full-width">
+    <input matInput formControlName="seller" [matAutocomplete]="autoSeller" placeholder="Seller">
+    <mat-autocomplete #autoSeller="matAutocomplete">
+      <mat-option *ngFor="let seller of possibleSellers" [value]="seller.name">
+        {{seller.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <br>
+
+
+  <mat-grid-list cols="3" rowHeight="1:0.6">
+    <mat-grid-tile colspan="2">
+      <perfect-scrollbar formArrayName="products">
+        <div *ngFor="let product of productForms.controls; let i = index" [formGroupName]="i">
+          <mat-form-field>
+            <input matInput type="text" formControlName="name" [matAutocomplete]="autoProduct"
+                   placeholder="Product Name">
+            <mat-autocomplete #autoProduct="matAutocomplete">
+              <ng-container *ngIf="!isLoadingProducts">
+                <mat-option *ngFor="let product of possibleProducts[i]" [value]="product.name">
+                  {{product.name}}
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" formControlName="amount" placeholder="Amount">
+          </mat-form-field>
+          <button mat-raised-button color="warn" (click)="deleteProduct(i)">Delete</button>
+          <mat-divider></mat-divider>
+        </div>
+      </perfect-scrollbar>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" (click)="addProduct()" style="bottom:40%">Add Product</button>
+      <button mat-raised-button color="primary" (click)="onSubmitBill()" type="submit" [disabled]="billForm.invalid"
+              style="right: 110px; bottom:25%">Submit
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
