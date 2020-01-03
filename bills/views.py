@@ -18,6 +18,3 @@ class BillView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.order_by('id')
-
-    def perform_create(self, serializer):
-        serializer.save(lead=self.request.user)
