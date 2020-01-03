@@ -40,9 +40,10 @@ export class AddBillModalComponent implements OnInit {
   possibleProducts: Product[][];
   selectedProducts: Product[];
 
-  constructor(public fb: FormBuilder, private matDialogRed: MatDialogRef<BillsComponent>,
-              @Inject(MAT_DIALOG_DATA) public data, private projectService: ProjectService, private billService: BillService,
-              private productService: ProductService, private userService: UserService, private sellerService: SellerService) {
+  constructor(public fb: FormBuilder, private matDialogRef: MatDialogRef<BillsComponent>,
+              @Inject(MAT_DIALOG_DATA) public data, private projectService: ProjectService,
+              private billService: BillService, private productService: ProductService,
+              private userService: UserService, private sellerService: SellerService) {
   }
 
   onSubmitBill() {
@@ -83,7 +84,6 @@ export class AddBillModalComponent implements OnInit {
     console.log(billNew);
     this.createPost(billNew);
   }
-
 
   ngOnInit() {
     const billBool = this.fb.group({
@@ -257,6 +257,6 @@ export class AddBillModalComponent implements OnInit {
   }
 
   close() {
-    this.matDialogRed.close();
+    this.matDialogRef.close();
   }
 }

@@ -1,1 +1,44 @@
-<p>add-project-modal works!</p>
+<form [formGroup]="projectForm">
+
+  <mat-form-field class="nearly-full-width">
+    <input matInput formControlName="name" type="text" placeholder="Project Name">
+  </mat-form-field>
+
+  <mat-form-field class="nearly-full-width">
+    <textarea matInput formControlName="description" type="text" placeholder="Description">
+    </textarea>
+  </mat-form-field>
+
+  <mat-form-field class="nearly-full-width">
+    <input matInput formControlName="lead" type="text" [matAutocomplete]="autoLead" placeholder="Project Leader">
+    <mat-autocomplete #autoLead="matAutocomplete">
+      <mat-option *ngFor="let lead of possibleLeaders" [value]="lead.username">
+        {{lead.username}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-grid-list cols="2" rowHeight="1:0.3">
+    <div formArrayName="members">
+      <div *ngFor="let member of memberForms.controls; let i = index" [formGroupName]="i">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput type="text" formControlName="name" [matAutocomplete]="autoMember" placeholder="Member">
+          </mat-form-field>
+          <mat-autocomplete #autoMember="matAutocomplete">
+            <ng-container *ngIf="!isLoadingMembers">
+              <mat-option *ngFor="let member of possibleMembers[i]" [value]="member.username">
+                {{member.username}}
+              </mat-option>
+            </ng-container>
+          </mat-autocomplete>
+          <button mat-button color="warn" (click)="deleteMember(i)">x</button>
+        </mat-grid-tile>
+      </div>
+    </div>
+  </mat-grid-list>
+  <button mat-raised-button color="primary" (click)="addMember()">+</button>
+  <button mat-raised-button color="primary" (click)="onSubmitProject()" type="submit" [disabled]="projectForm.invalid">
+    Submit
+  </button>
+</form>

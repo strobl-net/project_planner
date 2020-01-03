@@ -1,11 +1,12 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <p><b>Tools: </b></p>
+    <button mat-raised-button color="primary" (click)="openAddProject()" style="margin: 5%">Add Project</button>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-grid-list cols="3" rowHeight="2:1">
-  <div *ngFor="let project of projects | async">
+  <div *ngFor="let project of projects">
     <mat-grid-tile>
       <mat-card>
         <mat-card-header>
@@ -20,11 +21,5 @@
     </mat-grid-tile>
   </div>
 </mat-grid-list>
-<!--<input [(ngModel)]="new_project.name" placeholder="name"><br>-->
-<!--<input [(ngModel)]="new_project.description" placeholder="description"><br>-->
-<!--<input [(ngModel)]="new_project.lead" placeholder="lead"><br>-->
-<!--<input [(ngModel)]="member_ids" placeholder="member_ids"><br>-->
-<!--<input [(ngModel)]="new_project.image" placeholder="image link"><br>-->
-<!--<button (click)="createNewProject()">add Project</button>-->
 
 

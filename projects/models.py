@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
 
 
 class Project(models.Model):

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserAuth} from "./user.auth.model";
-import {Observable} from "rxjs";
+import {forkJoin, Observable} from "rxjs";
 import {UserModel} from "./user.model.temp";
 
 @Injectable({
@@ -25,5 +25,13 @@ export class UserService {
 
   getSearched(parameter: string): Observable<UserModel[]> {
     return this.http.get<UserModel[]>(this.url_get + "?search=" + parameter)
+  }
+
+  getMultipleSearched(parameters: string[]): Observable<any> {
+    let responseCollection = [];
+    parameters.forEach(parameter =>
+      responseCollection.push(this.http.get<Observable<UserModel[]>>(this.url_get + "?search=" + parameter))
+    );
+    return forkJoin(responseCollection);
   }
 }

@@ -64,7 +64,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     LoginModalComponent,
     AddProjectModalComponent,
   ],
-  entryComponents: [AddBillModalComponent],
+  entryComponents: [AddBillModalComponent, AddProjectModalComponent, LoginModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
