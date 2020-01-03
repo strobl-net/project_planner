@@ -12,7 +12,7 @@ class ProjectView(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['name', 'lead']
-    search_fields = ['name', 'lead']
+    search_fields = ['name']
 
     def get_queryset(self):
         return self.queryset.order_by('id')
