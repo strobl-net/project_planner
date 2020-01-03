@@ -13,6 +13,7 @@ import {UserService} from "../../../services/auth/user.service";
 import {UserModel} from "../../../services/auth/user.model.temp";
 import {Seller} from "../../../services/sellers/seller.model";
 import {SellerService} from "../../../services/sellers/seller.service";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-add-bill',
@@ -51,18 +52,25 @@ export class AddBillModalComponent implements OnInit {
     billNew.paid = this.billBools.get('paid').value;
     billNew.amount = this.amount.value;
     billNew.project = this.possibleProjects[0].id;
-    billNew.date_order = this.date_order.value;
-    billNew.date_paid = this.date_paid.value;
-    billNew.ordered_by = this.ordered_by.value;
+
+    let date_order: string = moment(this.date_order.value).format('YYYY-MM-DD');
+    console.log(date_order);
+    billNew.date_order = date_order;
+
+    let date_paid: string = moment(this.date_paid.value).format('YYYY-MM-DD');
+    console.log(date_paid);
+    if (date_paid != "Invalid date"){
+      billNew.date_paid = date_paid;
+    }
+
+    billNew.ordered_by = this.possibleBuyers[0].id;
     billNew.seller = this.possibleSellers[0].id;
     let products_local = this.productForms.value;
 
     let productsArray: Product[][] = this.possibleProducts;
     let productsIDArray: number[] = [];
     for (let product_local of products_local) {
-      console.log("i");
       for (let i = 0; i < productsArray.length; i++) {
-        console.log("j");
         if (product_local.name == productsArray[i][0].name) {
           for (let j = 0; j < product_local.amount; j++) {
             productsIDArray.push(productsArray[i][0].id);
@@ -70,8 +78,10 @@ export class AddBillModalComponent implements OnInit {
         }
       }
     }
+
     billNew.products = productsIDArray;
-    console.log("submitted")
+    console.log(billNew);
+    this.createPost(billNew);
   }
 
 
@@ -163,6 +173,20 @@ export class AddBillModalComponent implements OnInit {
       error => {
         console.log(error);
       })
+  };
+
+  createPost = (bill: Bill) => {
+    this.billService.post(bill).subscribe(
+      (val) => {
+        console.log("Post call successfully value returned in body", val);
+      },
+      response => {
+        console.log("Post call in error", response);
+      },
+      () => {
+        console.log("The Post observable is now completed.");
+      }
+    )
   };
 
   getSearchedProducts(search: string[]) {
