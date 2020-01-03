@@ -7,6 +7,7 @@ import {Project} from "../../../services/projects/project.model";
 import {UserModel} from "../../../services/auth/user.model.temp";
 import {UserService} from "../../../services/auth/user.service";
 import {debounceTime, finalize, startWith} from "rxjs/operators";
+import {Bill} from "../../../services/bills/bill.model.temp";
 
 @Component({
   selector: 'app-add-project-modal',
@@ -31,7 +32,21 @@ export class AddProjectModalComponent implements OnInit {
   }
 
   onSubmitProject() {
+    let projectName: string = this.name.value;
+    let projectDescription: string = this.description.value;
+    let projectLeadID: number = this.possibleLeaders[0].id;
+    let memberArray: UserModel[][] = this.possibleMembers;
+    let memberIDArray: number[] = [];
+    for (let i = 0; i < memberArray.length; i++) {
+      memberIDArray.push(memberArray[i][0].id);
+    }
 
+    let projectNew: Project = new Project();
+    projectNew.name = projectName;
+    projectNew.description = projectDescription;
+    projectNew.lead = projectLeadID;
+    projectNew.member_ids = memberIDArray;
+    this.createPost(projectNew);
   }
 
   ngOnInit() {
@@ -89,6 +104,20 @@ export class AddProjectModalComponent implements OnInit {
       error => {
         console.log(error);
         this.isLoadingMembers = false;
+      }
+    )
+  };
+
+    createPost = (project: Project) => {
+    this.project_service.post(project).subscribe(
+      (val) => {
+        console.log("Post call successfully value returned in body", val);
+      },
+      response => {
+        console.log("Post call in error", response);
+      },
+      () => {
+        console.log("The Post observable is now completed.");
       }
     )
   };
