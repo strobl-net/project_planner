@@ -64,7 +64,7 @@ import { BillModalComponent } from './components/modals/view-edit-modals/bill-mo
     AddProjectModalComponent,
     BillModalComponent,
   ],
-  entryComponents: [AddBillModalComponent, AddProjectModalComponent, LoginModalComponent],
+  entryComponents: [AddBillModalComponent, AddProjectModalComponent, LoginModalComponent, BillModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

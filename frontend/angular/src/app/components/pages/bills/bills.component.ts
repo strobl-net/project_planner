@@ -3,6 +3,7 @@ import {BillService} from "../../../services/bills/bill.service";
 import {Bill} from "../../../services/bills/bill.model.temp";
 import {MatDialog} from "@angular/material/dialog";
 import {AddBillModalComponent} from "../../modals/add-modals/add-bill-modal/add-bill-modal.component";
+import {BillModalComponent} from "../../modals/view-edit-modals/bill-modal/bill-modal.component";
 
 
 @Component({
@@ -51,6 +52,15 @@ export class BillsComponent implements OnInit {
         this.refresh();
       }
     );
+  }
+
+  public openBillView(id: number): void {
+    console.log(id);
+    this.dialog.open(BillModalComponent, {width: '60%', height: '80', data: id}).afterClosed().subscribe(
+      result => {
+        this.refresh();
+      }
+    )
   }
 
   createNewBill() {
