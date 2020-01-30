@@ -15,10 +15,6 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(req);
-    // const auth_req = req.clone({
-    //   headers: req.headers.set('Authorization', 'token ' + localStorage.getItem('token'))
-    // });
-    // return next.handle(auth_req);
   }
 
 }
