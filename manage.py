@@ -2,13 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import env_file
 
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project_planner.settings')
-    env_file.get(project.env)
-    env_file.load()
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
